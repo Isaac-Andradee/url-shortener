@@ -1,2 +1,2 @@
 # url-shortener
-A URL shortener  built with Spring Boot, MongoDB, Redis and Docker
+This repo it aims to document and version a URL Shortener for studying concepts and good programming practices.
