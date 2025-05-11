@@ -1,4 +1,4 @@
-package com.isaacandrade.url_shortener.service;
+package com.isaacandrade.url_shortener;
 
 import com.isaacandrade.url_shortener.domain.TestEntity;
 import com.isaacandrade.url_shortener.repository.TestRepository;
@@ -17,7 +17,7 @@ public class MongoConnectionTester implements CommandLineRunner {
     @Override
     public void run(String... args) {
         TestEntity entity = new TestEntity(null, "MongoDB is working!");
-        repository.save(entity);
+//        repository.save(entity);
         System.out.println("✔️ Test document saved: " + entity);
     }
 }
