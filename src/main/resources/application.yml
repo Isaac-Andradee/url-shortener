@@ -1,3 +1,13 @@
 spring:
   application:
     name: url-shortener
+  data:
+    mongodb:
+      host: ${MONGO_HOST}
+      port: ${MONGO_PORT}
+      uri: mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
+      username: ${MONGO_USERNAME}
+      password: ${MONGO_PASSWORD}
+      database: ${MONGO_DATABASE}
+server:
+  port: 8084
