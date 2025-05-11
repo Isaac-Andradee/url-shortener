@@ -1,3 +1,6 @@
+server:
+  port: ${SERVER_PORT}
+
 spring:
   application:
     name: url-shortener
@@ -9,5 +12,12 @@ spring:
       username: ${MONGO_USERNAME}
       password: ${MONGO_PASSWORD}
       database: ${MONGO_DATABASE}
-server:
-  port: 8084
+
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+      timeout: 5000
+      client-type: lettuce
+  cache:
+    type: ${SPRING_CACHE_TYPE}
