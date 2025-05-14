@@ -16,7 +16,6 @@
 		<module>shortener-service</module>
 		<module>resolver-service</module>
 		<module>key-generator-service</module>
-		<module>common</module>
 	</modules>
 
 	<properties>
