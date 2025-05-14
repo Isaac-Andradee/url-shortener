@@ -1,4 +1,4 @@
-package com.isaacandrade.url_shortener_service;
+package com.isaacandrade.urlshortenerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
