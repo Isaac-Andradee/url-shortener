@@ -15,6 +15,8 @@ public class UrlMapping implements Serializable {
     private String longUrl;
     private String alias;
 
+    protected UrlMapping() {}
+
     @PersistenceCreator
     public UrlMapping(String shortKey, String longUrl, String alias) {
         this.shortKey = shortKey;

@@ -1,9 +1,11 @@
 package com.isaacandrade.keygeneratorservice.snowflake.core;
 
 import com.isaacandrade.keygeneratorservice.snowflake.infra.time.TimeStampProvider;
+import org.springframework.stereotype.Component;
 
 import static com.isaacandrade.keygeneratorservice.snowflake.utils.SnowflakeConstants.*;
 
+@Component
 public class SequenceUpdater {
     private final TimeStampProvider timeStampProvider;
     private long sequence = 0L;
@@ -12,20 +14,22 @@ public class SequenceUpdater {
         this.timeStampProvider = timeStampProvider;
     }
 
-    public void updateSequenceWith(long currentTimestamp, long lastTimestamp) {
+    public long updateSequenceWith(long currentTimestamp, long lastTimestamp) {
         if (currentTimestamp == lastTimestamp) {
             incrementSequence();
-            if (isOverflow()) waitNextMillis(currentTimestamp);
+            if (isOverflow()) currentTimestamp = waitNextMillis(currentTimestamp);
         } else {
             resetSequence();
         }
+        return currentTimestamp;
     }
 
-    private void waitNextMillis(long currentTimestamp) {
+    private long waitNextMillis(long currentTimestamp) {
         long timestamp;
         do {
             timestamp = timeStampProvider.currentTimeMillis();
         } while (timestamp <= currentTimestamp);
+        return timestamp;
     }
 
     public void incrementSequence() {

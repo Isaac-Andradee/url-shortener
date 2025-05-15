@@ -14,17 +14,22 @@ public class SnowflakeIdGen {
     private final IdAssembler idAssembler;
     private long lastTimestamp = -1L;
 
-    public SnowflakeIdGen(NodeInfoProvider nodeInfoProvider) {
-        this.timeStampProvider = new SystemTimeStampProvider();
-        this.timestampValidator = new TimestampValidator();
-        this.sequenceUpdater = new SequenceUpdater(timeStampProvider);
-        this.idAssembler = new IdAssembler(nodeInfoProvider);
+    public SnowflakeIdGen(
+            TimeStampProvider timeStampProvider,
+            TimestampValidator timestampValidator,
+            SequenceUpdater sequenceUpdater,
+            IdAssembler idAssembler
+    ) {
+        this.timeStampProvider = timeStampProvider;
+        this.timestampValidator = timestampValidator;
+        this.sequenceUpdater = sequenceUpdater;
+        this.idAssembler = idAssembler;
     }
 
     public synchronized long nextId() {
         long currentTimestamp = timeStampProvider.currentTimeMillis();
         timestampValidator.validateTimestamp(currentTimestamp, lastTimestamp);
-        sequenceUpdater.updateSequenceWith(currentTimestamp, lastTimestamp);
+        currentTimestamp =  sequenceUpdater.updateSequenceWith(currentTimestamp, lastTimestamp);
         lastTimestamp = currentTimestamp;
         return idAssembler.assemble(currentTimestamp, sequenceUpdater.getSequence());
     }

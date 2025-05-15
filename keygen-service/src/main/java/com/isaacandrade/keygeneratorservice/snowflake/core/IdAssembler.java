@@ -1,9 +1,11 @@
 package com.isaacandrade.keygeneratorservice.snowflake.core;
 
 import com.isaacandrade.keygeneratorservice.snowflake.infra.node.NodeInfoProvider;
+import org.springframework.stereotype.Component;
 
 import static com.isaacandrade.keygeneratorservice.snowflake.utils.SnowflakeConstants.*;
 
+@Component
 public class IdAssembler {
 
     private final long datacenterId;
