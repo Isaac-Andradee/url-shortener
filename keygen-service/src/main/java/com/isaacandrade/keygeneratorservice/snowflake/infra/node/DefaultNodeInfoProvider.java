@@ -1,5 +1,6 @@
 package com.isaacandrade.keygeneratorservice.snowflake.infra.node;
 
+import com.isaacandrade.keygeneratorservice.snowflake.exception.NetworkException;
 import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
@@ -42,7 +43,7 @@ public class DefaultNodeInfoProvider implements NodeInfoProvider{
             }
             return InetAddress.getLocalHost();
         } catch (Exception e) {
-            throw new RuntimeException("Unable to resolve machine IP", e);
+            throw new NetworkException("Unable to resolve machine IP");
         }
     }
 
