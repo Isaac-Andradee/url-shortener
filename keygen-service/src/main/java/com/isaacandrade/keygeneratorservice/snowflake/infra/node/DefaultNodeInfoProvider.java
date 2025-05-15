@@ -6,6 +6,10 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
+
+// TODO: Maybe find others ways to get both nodes...
+// TODO: Abstract this class to allow different implementations
+
 @Component
 public class DefaultNodeInfoProvider implements NodeInfoProvider{
     @Override
