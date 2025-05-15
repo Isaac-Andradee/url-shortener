@@ -1,1 +1,6 @@
-spring.application.name=key-generator-service
+server:
+  port: ${KEYGEN_SERVER_PORT}
+
+spring:
+  application:
+    name: keygen-service

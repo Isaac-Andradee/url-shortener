@@ -1,7 +1,7 @@
-package com.isaacandrade.urlshortenerservice.url.infra.router;
+package com.isaacandrade.urlshortenerservice.urlshort.infra.router;
 
-import com.isaacandrade.urlshortenerservice.url.application.dto.ShortenRequest;
-import com.isaacandrade.urlshortenerservice.url.application.ShortenerUseCase;
+import com.isaacandrade.urlshortenerservice.urlshort.application.ShortenerUseCase;
+import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

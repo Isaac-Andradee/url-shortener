@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.keygen.utils;
+package com.isaacandrade.keygeneratorservice.snowflake.utils;
 
 import org.springframework.stereotype.Component;
 
@@ -15,6 +15,4 @@ public class SnowflakeConstants {
     public static final long DATACENTER_ID_SHIFT = MACHINE_ID_SHIFT + MACHINE_ID_BITS;
     public static final long TIMESTAMP_SHIFT = DATACENTER_ID_SHIFT + DATACENTER_ID_BITS;
 
-    public static long lastTimestamp = -1L;
-    public static long sequence = 0L;
 }
