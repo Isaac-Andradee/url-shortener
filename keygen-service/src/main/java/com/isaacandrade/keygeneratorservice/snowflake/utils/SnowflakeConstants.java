@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SnowflakeConstants {
 
-    public static final long EPOCH = 1710000000000L;
+    public static final long EPOCH =1747267200000L;
     public static final long DATACENTER_ID_BITS = 5L;
     public static final long MACHINE_ID_BITS = 5L;
     public static final long SEQUENCE_BITS = 12L;
