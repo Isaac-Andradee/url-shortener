@@ -4,7 +4,6 @@ import com.isaacandrade.keygeneratorservice.snowflake.infra.node.NodeInfoProvide
 import com.isaacandrade.keygeneratorservice.snowflake.infra.time.SystemTimeStampProvider;
 import com.isaacandrade.keygeneratorservice.snowflake.infra.time.TimeStampProvider;
 import org.springframework.stereotype.Component;
-import static com.isaacandrade.keygeneratorservice.snowflake.utils.SnowflakeConstants.lastTimestamp;
 
 @Component
 public class SnowflakeIdGen {
@@ -13,6 +12,7 @@ public class SnowflakeIdGen {
     private final TimeStampProvider timeStampProvider;
     private final SequenceUpdater sequenceUpdater;
     private final IdAssembler idAssembler;
+    private long lastTimestamp = -1L;
 
     public SnowflakeIdGen(NodeInfoProvider nodeInfoProvider) {
         this.timeStampProvider = new SystemTimeStampProvider();
@@ -24,7 +24,7 @@ public class SnowflakeIdGen {
     public synchronized long nextId() {
         long currentTimestamp = timeStampProvider.currentTimeMillis();
         timestampValidator.validateTimestamp(currentTimestamp, lastTimestamp);
-        sequenceUpdater.updateSequenceWith(currentTimestamp);
+        sequenceUpdater.updateSequenceWith(currentTimestamp, lastTimestamp);
         lastTimestamp = currentTimestamp;
         return idAssembler.assemble(currentTimestamp, sequenceUpdater.getSequence());
     }

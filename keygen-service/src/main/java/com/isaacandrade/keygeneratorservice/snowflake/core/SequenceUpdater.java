@@ -6,17 +6,18 @@ import static com.isaacandrade.keygeneratorservice.snowflake.utils.SnowflakeCons
 
 public class SequenceUpdater {
     private final TimeStampProvider timeStampProvider;
+    private long sequence = 0L;
 
     public SequenceUpdater(TimeStampProvider timeStampProvider) {
         this.timeStampProvider = timeStampProvider;
     }
 
-    public void updateSequenceWith(long currentTimestamp) {
+    public void updateSequenceWith(long currentTimestamp, long lastTimestamp) {
         if (currentTimestamp == lastTimestamp) {
             incrementSequence();
             if (isOverflow()) waitNextMillis(currentTimestamp);
         } else {
-            reset();
+            resetSequence();
         }
     }
 
@@ -31,7 +32,7 @@ public class SequenceUpdater {
         sequence = (sequence + 1) & MAX_SEQUENCE;
     }
 
-    public void reset() {
+    public void resetSequence() {
         sequence = 0;
     }
 
