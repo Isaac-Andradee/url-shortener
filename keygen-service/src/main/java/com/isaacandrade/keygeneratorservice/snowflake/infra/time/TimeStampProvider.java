@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.snowflake.core;
+package com.isaacandrade.keygeneratorservice.snowflake.infra.time;
 
 
 public interface TimeStampProvider {

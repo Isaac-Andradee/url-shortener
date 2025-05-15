@@ -1,91 +1,31 @@
-package com.isaacandrade.keygeneratorservice.keygen.application;
+package com.isaacandrade.keygeneratorservice.snowflake.core;
 
+import com.isaacandrade.keygeneratorservice.snowflake.infra.node.NodeInfoProvider;
+import com.isaacandrade.keygeneratorservice.snowflake.infra.time.SystemTimeStampProvider;
+import com.isaacandrade.keygeneratorservice.snowflake.infra.time.TimeStampProvider;
 import org.springframework.stereotype.Component;
-
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.util.Enumeration;
-import static com.isaacandrade.keygeneratorservice.keygen.utils.SnowflakeConstants.*;
+import static com.isaacandrade.keygeneratorservice.snowflake.utils.SnowflakeConstants.lastTimestamp;
 
 @Component
 public class SnowflakeIdGen {
 
-    private final long datacenterId;
-    private final long machineId;
+    private final TimestampValidator timestampValidator;
+    private final TimeStampProvider timeStampProvider;
+    private final SequenceUpdater sequenceUpdater;
+    private final IdAssembler idAssembler;
 
-
-    public SnowflakeIdGen() {
-        this.datacenterId = getDatacenterId();
-        this.machineId = getMachineId();
+    public SnowflakeIdGen(NodeInfoProvider nodeInfoProvider) {
+        this.timeStampProvider = new SystemTimeStampProvider();
+        this.timestampValidator = new TimestampValidator();
+        this.sequenceUpdater = new SequenceUpdater(timeStampProvider);
+        this.idAssembler = new IdAssembler(nodeInfoProvider);
     }
 
     public synchronized long nextId() {
-        long timestamp = currentTime();
-
-        if (timestamp < lastTimestamp) {
-            throw new IllegalStateException("Clock moved backwards.");
-        }
-
-        if (timestamp == lastTimestamp) {
-            sequence = (sequence + 1) & MAX_SEQUENCE;
-            if (sequence == 0) {
-                timestamp = waitNextMillis(timestamp);
-            }
-        } else {
-            sequence = 0;
-        }
-
-        lastTimestamp = timestamp;
-
-        return ((timestamp - EPOCH) << TIMESTAMP_SHIFT)
-                | (datacenterId << DATACENTER_ID_SHIFT)
-                | (machineId << MACHINE_ID_SHIFT)
-                | sequence;
-    }
-
-    private long currentTime() {
-        return System.currentTimeMillis();
-    }
-
-    private long waitNextMillis(long lastTimestamp) {
-        long timestamp = currentTime();
-        while (timestamp <= lastTimestamp) {
-            timestamp = currentTime();
-        }
-        return timestamp;
-    }
-
-    private long getDatacenterId() {
-        try {
-            String hostname = InetAddress.getLocalHost().getHostName();
-            return Math.abs(hostname.hashCode()) % 32;
-        } catch (Exception e) {
-            return 1L;
-        }
-    }
-
-    private long getMachineId() {
-        try {
-            InetAddress ip = getLocalAddress();
-            byte[] addr = ip.getAddress();
-            return addr[addr.length - 1] & 0x1F;
-        } catch (Exception e) {
-            return 1L;
-        }
-    }
-
-    private InetAddress getLocalAddress() throws Exception {
-        Enumeration<NetworkInterface> nics = NetworkInterface.getNetworkInterfaces();
-        while (nics.hasMoreElements()) {
-            NetworkInterface nic = nics.nextElement();
-            Enumeration<InetAddress> addresses = nic.getInetAddresses();
-            while (addresses.hasMoreElements()) {
-                InetAddress addr = addresses.nextElement();
-                if (!addr.isLoopbackAddress() && addr.getHostAddress().indexOf(':') == -1) {
-                    return addr;
-                }
-            }
-        }
-        return InetAddress.getLocalHost();
+        long currentTimestamp = timeStampProvider.currentTimeMillis();
+        timestampValidator.validateTimestamp(currentTimestamp, lastTimestamp);
+        sequenceUpdater.updateSequenceWith(currentTimestamp);
+        lastTimestamp = currentTimestamp;
+        return idAssembler.assemble(currentTimestamp, sequenceUpdater.getSequence());
     }
 }
