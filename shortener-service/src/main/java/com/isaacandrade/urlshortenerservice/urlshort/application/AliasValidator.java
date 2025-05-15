@@ -1,6 +1,7 @@
 package com.isaacandrade.urlshortenerservice.urlshort.application;
 
 import com.isaacandrade.common.url.repository.UrlRepository;
+import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasNotAvailableException;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ public class AliasValidator {
 
     public void validateIfExistInDb(String alias) {
         if(!Strings.isBlank(alias) && urlRepository.findById(alias).isPresent()) {
-            throw new IllegalArgumentException("Alias Not Available");
+            throw new AliasNotAvailableException();
         }
     }
 
