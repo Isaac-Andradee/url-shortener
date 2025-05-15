@@ -1,10 +1,15 @@
 package com.isaacandrade.keygeneratorservice.snowflake.infra.node;
 
+import com.isaacandrade.keygeneratorservice.snowflake.exception.NetworkException;
 import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
+
+
+// TODO: Maybe find others ways to get both nodes...
+// TODO: Abstract this class to allow different implementations
 
 @Component
 public class DefaultNodeInfoProvider implements NodeInfoProvider{
@@ -38,7 +43,7 @@ public class DefaultNodeInfoProvider implements NodeInfoProvider{
             }
             return InetAddress.getLocalHost();
         } catch (Exception e) {
-            throw new RuntimeException("Unable to resolve machine IP", e);
+            throw new NetworkException("Unable to resolve machine IP");
         }
     }
 
