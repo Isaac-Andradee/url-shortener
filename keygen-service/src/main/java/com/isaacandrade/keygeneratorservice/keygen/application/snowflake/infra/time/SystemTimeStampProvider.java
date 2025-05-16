@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.snowflake.infra.time;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.time;
 
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,9 @@
-package com.isaacandrade.keygeneratorservice.snowflake.core;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core;
 
-import com.isaacandrade.keygeneratorservice.snowflake.infra.node.NodeInfoProvider;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.node.NodeInfoProvider;
 import org.springframework.stereotype.Component;
 
-import static com.isaacandrade.keygeneratorservice.snowflake.utils.SnowflakeConstants.*;
+import static com.isaacandrade.keygeneratorservice.keygen.application.snowflake.utils.SnowflakeConstants.*;
 
 @Component
 public class IdAssembler {

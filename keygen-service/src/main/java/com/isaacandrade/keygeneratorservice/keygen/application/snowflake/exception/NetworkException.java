@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.snowflake.exception;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception;
 
 public class NetworkException extends RuntimeException {
     public NetworkException() {super("Network Error!");}

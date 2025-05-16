@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.snowflake.infra.node;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.node;
 
 public interface NodeInfoProvider {
     long getDatacenterId();

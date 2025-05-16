@@ -1,8 +1,6 @@
 package com.isaacandrade.keygeneratorservice.keygen.infra.router;
 
-import com.isaacandrade.keygeneratorservice.base62.core.Base62Encoder;
 import com.isaacandrade.keygeneratorservice.keygen.application.KeyGenUseCase;
-import com.isaacandrade.keygeneratorservice.snowflake.core.SnowflakeIdGen;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
