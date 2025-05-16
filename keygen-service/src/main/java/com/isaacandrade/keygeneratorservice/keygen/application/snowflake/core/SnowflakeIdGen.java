@@ -25,10 +25,30 @@ public class SnowflakeIdGen {
     }
 
     public synchronized long nextId() {
-        long currentTimestamp = timeStampProvider.currentTimeMillis();
-        timestampValidator.validateTimestamp(currentTimestamp, lastTimestamp);
-        currentTimestamp =  sequenceUpdater.updateSequenceWith(currentTimestamp, lastTimestamp);
+        long currentTimestamp = getCurrentTimestamp();
+        validateTimestamp(currentTimestamp, lastTimestamp);
+        currentTimestamp = updateSequence(currentTimestamp, lastTimestamp);
         lastTimestamp = currentTimestamp;
-        return idAssembler.assemble(currentTimestamp, sequenceUpdater.getSequence());
+        return snowflakeId(currentTimestamp, getSequence());
+    }
+
+    private long getCurrentTimestamp() {
+        return timeStampProvider.currentTimeMillis();
+    }
+
+    private void validateTimestamp(long currentTimestamp, long lastTimestamp) {
+        timestampValidator.validateTimestamp(currentTimestamp, lastTimestamp);
+    }
+
+    private long updateSequence(long currentTimestamp, long lastTimestamp) {
+        return sequenceUpdater.updateSequenceWith(currentTimestamp, lastTimestamp);
+    }
+
+    private long getSequence() {
+        return sequenceUpdater.getSequence();
+    }
+
+    private long snowflakeId(long currentTimestamp, long sequence) {
+        return idAssembler.assemble(currentTimestamp, sequence);
     }
 }
