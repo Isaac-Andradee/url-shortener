@@ -2,6 +2,7 @@ package com.isaacandrade.urlshortenerservice.urlshort.infra.router;
 
 import com.isaacandrade.urlshortenerservice.urlshort.application.ShortenerUseCase;
 import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenRequest;
+import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +20,8 @@ public class ShortenerController {
     }
 
     @PostMapping
-    public ResponseEntity<String> shortenUrl(@RequestBody ShortenRequest request) {
-        String shortUrl = shortenerUseCase.shorten(request);
+    public ResponseEntity<ShortenResponse> shortenUrl(@RequestBody ShortenRequest request) {
+        ShortenResponse shortUrl = shortenerUseCase.shorten(request);
         return ResponseEntity.ok(shortUrl);
     }
 }

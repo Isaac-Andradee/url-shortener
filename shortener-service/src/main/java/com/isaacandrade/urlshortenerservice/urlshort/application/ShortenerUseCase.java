@@ -2,6 +2,7 @@ package com.isaacandrade.urlshortenerservice.urlshort.application;
 
 import com.isaacandrade.common.url.model.UrlMapping;
 import com.isaacandrade.urlshortenerservice.config.ShortenerProperties;
+import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenResponse;
 import com.isaacandrade.urlshortenerservice.urlshort.infra.DB.DbCacheSaver;
 import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenRequest;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class ShortenerUseCase {
         this.dbCacheSaver = dbCacheSaver;
     }
 
-    public String shorten(ShortenRequest request) {
+    public ShortenResponse shorten(ShortenRequest request) {
         validateAlias(request.alias());
         String shortKey = generateShortKey(request.alias());
         UrlMapping urlMapping = buildMapping(shortKey, request);
@@ -46,7 +47,7 @@ public class ShortenerUseCase {
         dbCacheSaver.saveUrlMapping(urlMapping);
     }
 
-    private String buildShortUrl(String shortKey) {
-        return domainProperties + shortKey;
+    private ShortenResponse buildShortUrl(String shortKey) {
+        return new ShortenResponse( domainProperties + shortKey);
     }
 }
