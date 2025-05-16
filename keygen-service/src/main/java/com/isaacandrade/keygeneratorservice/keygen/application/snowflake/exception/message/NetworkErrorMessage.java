@@ -1,10 +1,10 @@
-package com.isaacandrade.keygeneratorservice.snowflake.exception.message;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.message;
 
-public class RegressiveClockErrorMessage {
+public class NetworkErrorMessage {
     private int status;
     private String message;
 
-    public RegressiveClockErrorMessage(int status, String message) {
+    public NetworkErrorMessage(int status, String message) {
         this.status = status;
         this.message = message;
     }

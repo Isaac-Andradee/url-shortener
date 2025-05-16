@@ -1,7 +1,7 @@
 package com.isaacandrade.keygeneratorservice.keygen.application;
 
-import com.isaacandrade.keygeneratorservice.base62.core.Base62Encoder;
-import com.isaacandrade.keygeneratorservice.snowflake.core.SnowflakeIdGen;
+import com.isaacandrade.keygeneratorservice.keygen.application.base62.core.Base62Encoder;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core.SnowflakeIdGen;
 import org.springframework.stereotype.Service;
 
 @Service

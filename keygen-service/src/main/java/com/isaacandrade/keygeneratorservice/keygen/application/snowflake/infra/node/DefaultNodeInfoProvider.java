@@ -1,6 +1,6 @@
-package com.isaacandrade.keygeneratorservice.snowflake.infra.node;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.node;
 
-import com.isaacandrade.keygeneratorservice.snowflake.exception.NetworkException;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.NetworkException;
 import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;

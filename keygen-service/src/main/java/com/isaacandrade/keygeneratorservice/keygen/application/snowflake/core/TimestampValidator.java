@@ -1,6 +1,6 @@
-package com.isaacandrade.keygeneratorservice.snowflake.core;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core;
 
-import com.isaacandrade.keygeneratorservice.snowflake.exception.RegressiveClockException;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.RegressiveClockException;
 import org.springframework.stereotype.Component;
 
 @Component

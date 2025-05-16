@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.base62.utils;
+package com.isaacandrade.keygeneratorservice.keygen.application.base62.utils;
 
 public class Base62Constants {
     public static final String BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.snowflake.utils;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.utils;
 
 import org.springframework.stereotype.Component;
 

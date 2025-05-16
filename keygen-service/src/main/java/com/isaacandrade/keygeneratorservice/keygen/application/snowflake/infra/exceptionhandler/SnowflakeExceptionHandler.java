@@ -1,9 +1,9 @@
-package com.isaacandrade.keygeneratorservice.snowflake.infra.exceptionhandler;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.exceptionhandler;
 
-import com.isaacandrade.keygeneratorservice.snowflake.exception.NetworkException;
-import com.isaacandrade.keygeneratorservice.snowflake.exception.RegressiveClockException;
-import com.isaacandrade.keygeneratorservice.snowflake.exception.message.NetworkErrorMessage;
-import com.isaacandrade.keygeneratorservice.snowflake.exception.message.RegressiveClockErrorMessage;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.NetworkException;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.RegressiveClockException;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.message.NetworkErrorMessage;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.message.RegressiveClockErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

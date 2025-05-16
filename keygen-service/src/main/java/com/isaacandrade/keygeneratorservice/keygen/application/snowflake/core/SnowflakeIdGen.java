@@ -1,8 +1,6 @@
-package com.isaacandrade.keygeneratorservice.snowflake.core;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core;
 
-import com.isaacandrade.keygeneratorservice.snowflake.infra.node.NodeInfoProvider;
-import com.isaacandrade.keygeneratorservice.snowflake.infra.time.SystemTimeStampProvider;
-import com.isaacandrade.keygeneratorservice.snowflake.infra.time.TimeStampProvider;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.time.TimeStampProvider;
 import org.springframework.stereotype.Component;
 
 @Component

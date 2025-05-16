@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.snowflake.exception;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception;
 
 public class RegressiveClockException extends RuntimeException {
     public RegressiveClockException() {super("Incapable To Generate Unique IDs");}

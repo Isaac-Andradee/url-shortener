@@ -1,6 +1,6 @@
-package com.isaacandrade.keygeneratorservice.base62.core;
+package com.isaacandrade.keygeneratorservice.keygen.application.base62.core;
 
-import static com.isaacandrade.keygeneratorservice.base62.utils.Base62Constants.*;
+import static com.isaacandrade.keygeneratorservice.keygen.application.base62.utils.Base62Constants.*;
 
 public class Base62Encoder {
     public static String encode(long snowflakeId) {
