@@ -23,3 +23,6 @@ spring:
 
 shortener:
   domain: ${SHORTENER_DOMAIN}
+
+keygen:
+  base_url: ${KEYGEN_BASE_URL}
