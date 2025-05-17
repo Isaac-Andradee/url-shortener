@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+keygen.base_url: http://localhost:8080
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: shortener-test
+      uri: mongodb://localhost:27017/shortener-test
+      username: root
+      password: test
+    redis:
+      host: localhost
+      port: 6379
+      password: test
+      client-type: lettuce
+  cache:
+    type: redis
+shortener:
+    domain: http://localhost:80/
