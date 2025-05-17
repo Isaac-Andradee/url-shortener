@@ -10,7 +10,7 @@ public class Base62EncoderTest {
     @Test
     void encode_convertsLongToBase62String() {
         long input = 123456789012345L;
-        long LENGTH = 7;
+        int LENGTH = 7;
         String result = Base62Encoder.encode(input);
         assertNotNull(result);
         assertEquals(LENGTH, result.length());
