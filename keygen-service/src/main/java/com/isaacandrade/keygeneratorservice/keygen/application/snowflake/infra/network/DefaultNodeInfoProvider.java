@@ -1,4 +1,4 @@
-package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.node;
+package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.network;
 
 import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.NetworkException;
 import org.springframework.stereotype.Component;
@@ -13,9 +13,18 @@ import java.util.Enumeration;
 
 @Component
 public class DefaultNodeInfoProvider implements NodeInfoProvider{
+    private final HostnameResolver hostnameResolver;
+    private final NetworkInterfaceProvider networkInterfaceProvider;
+
+    public DefaultNodeInfoProvider(HostnameResolver hostnameResolver,
+                                   NetworkInterfaceProvider networkInterfaceProvider) {
+        this.hostnameResolver = hostnameResolver;
+        this.networkInterfaceProvider = networkInterfaceProvider;
+    }
+
     @Override
     public long getDatacenterId() {
-        String hostname = resolveHostname();
+        String hostname = hostnameResolver.resolve();
         return hashToRange(hostname.hashCode(), 32);
     }
 
@@ -25,17 +34,9 @@ public class DefaultNodeInfoProvider implements NodeInfoProvider{
         return extractLastByte(address) & 0x1F;
     }
 
-    private String resolveHostname() {
-        try {
-            return InetAddress.getLocalHost().getHostName();
-        } catch (Exception e) {
-            return "default-host";
-        }
-    }
-
     private InetAddress resolveNonLoopbackIPv4() {
         try {
-            Enumeration<NetworkInterface> nics = NetworkInterface.getNetworkInterfaces();
+            Enumeration<NetworkInterface> nics = networkInterfaceProvider.getNetworkInterfaces();
             while (nics.hasMoreElements()) {
                 NetworkInterface nic = nics.nextElement();
                 InetAddress address = getFirstValidAddress(nic);

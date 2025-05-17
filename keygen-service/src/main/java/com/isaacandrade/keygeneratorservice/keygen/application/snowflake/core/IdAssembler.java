@@ -1,6 +1,6 @@
 package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core;
 
-import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.node.NodeInfoProvider;
+import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.network.NodeInfoProvider;
 import org.springframework.stereotype.Component;
 
 import static com.isaacandrade.keygeneratorservice.keygen.application.snowflake.utils.SnowflakeConstants.*;
