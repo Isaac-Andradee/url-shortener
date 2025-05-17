@@ -22,11 +22,15 @@ public class KeyGenClient {
     }
 
     private Optional<String> callKeygenService(String url) {
-        return Optional.ofNullable(webClient.get()
-                .uri(url)
-                .retrieve()
-                .bodyToMono(Map.class)
-                .map(response -> (String) response.get("shortKey"))
-                .block());
+        try {
+            return Optional.ofNullable(webClient.get()
+                    .uri(url)
+                    .retrieve()
+                    .bodyToMono(Map.class)
+                    .map(response -> (String) response.get("shortKey"))
+                    .block());
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 }
