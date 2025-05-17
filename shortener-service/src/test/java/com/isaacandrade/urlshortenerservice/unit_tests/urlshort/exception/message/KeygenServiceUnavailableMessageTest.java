@@ -1,6 +1,5 @@
 package com.isaacandrade.urlshortenerservice.unit_tests.urlshort.exception.message;
 
-import com.isaacandrade.urlshortenerservice.urlshort.exception.message.AliasNotAvailableMessage;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.message.KeygenServiceUnavailableMessage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
