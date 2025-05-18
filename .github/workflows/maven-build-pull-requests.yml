@@ -14,7 +14,7 @@ jobs:
           docker pull isaacandra/keygen:latest
           docker run -d -p 8085:8085 --name keygen-service \
             -e KEYGEN_SERVER_PORT=8085 \
-            isaacandra/keygen:latesr \
+            isaacandra/keygen:latest \
           sleep 20
 
   test:
