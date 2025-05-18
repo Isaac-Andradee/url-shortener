@@ -15,6 +15,6 @@ public class DbLookup {
 
     public UrlMapping getFromDb(String shortKey) {
         return urlRepository.findById(shortKey).
-                orElseThrow(() -> new KeyNotFoundException("Key Not Found"));
+                orElseThrow(() -> new KeyNotFoundException("Key " + shortKey +" Not Found"));
     }
 }

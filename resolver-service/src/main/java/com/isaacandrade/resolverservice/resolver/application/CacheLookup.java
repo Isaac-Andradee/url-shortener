@@ -5,6 +5,8 @@ import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;
 
+import static com.isaacandrade.resolverservice.resolver.utils.ResolverConstants.CACHE_NAME;
+
 @Component
 public class CacheLookup {
     private final CacheManager cacheManager;
@@ -14,11 +16,11 @@ public class CacheLookup {
     }
 
     public UrlMapping get(String shortKey) {
-        Cache.ValueWrapper cachedKey = cacheManager.getCache("keys").get(shortKey);
+        Cache.ValueWrapper cachedKey = cacheManager.getCache(CACHE_NAME).get(shortKey);
         return cachedKey != null ? (UrlMapping) cachedKey.get() : null;
     }
 
     public void save(String shortKey, UrlMapping urlMapping) {
-        cacheManager.getCache("keys").put(shortKey, urlMapping);
+        cacheManager.getCache(CACHE_NAME).put(shortKey, urlMapping);
     }
 }
