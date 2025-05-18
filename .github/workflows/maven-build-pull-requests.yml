@@ -9,12 +9,13 @@ jobs:
     name: Setup Keygen Service
     runs-on: ubuntu-latest
     steps:
-      - name: Iniciar container Keygen
+      - name: Start Keygen container
         run: |
           docker pull isaacandra/keygen:latest
           docker run -d -p 8085:8085 --name keygen-service \
             -e KEYGEN_SERVER_PORT=8085 \
-            isaacandra/keygen:latest
+            isaacandra/keygen:latesr \
+          sleep 20
 
   test:
     runs-on: ubuntu-latest
