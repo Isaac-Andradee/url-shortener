@@ -31,9 +31,8 @@ jobs:
           docker pull isaacandra/keygen:latest
           docker run -d --name keygen-service -p 8085:8085 \
             -e KEYGEN_SERVER_PORT=8085 \
-            --env-file .env \
             isaacandra/keygen:latest
-          sleep 10
+          sleep 20
 
       - name: Build all modules
         run: mvn clean install -DskipTests
