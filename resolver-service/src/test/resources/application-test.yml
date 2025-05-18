@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: resolver-test
+      uri: mongodb://localhost:27017/resolver-test
+      username: root
+      password: test
+    redis:
+      host: localhost
+      port: 6379
+      password: test
+      client-type: lettuce
+  cache:
+    type: redis
