@@ -5,22 +5,9 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  setup-keygen-service:
-    name: Setup Keygen Service
-    runs-on: ubuntu-latest
-    steps:
-      - name: Start Keygen container
-        run: |
-          docker pull isaacandra/keygen:latest
-          docker run -d -p 8085:8085 --name keygen-service \
-            -e KEYGEN_SERVER_PORT=8085 \
-            isaacandra/keygen:latest \
-          sleep 20
-
   test:
+    name: Test and Build
     runs-on: ubuntu-latest
-    name: Execute Tests
-    needs: setup-keygen-service
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -38,6 +25,15 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
+      - name: Start Keygen container
+        run: |
+          docker pull isaacandra/keygen:latest
+          docker run -d --name keygen-service -p 8085:8085 \
+            -e KEYGEN_SERVER_PORT=8085 \
+            --env-file .env \
+            isaacandra/keygen:latest
+          sleep 10
 
       - name: Build all modules
         run: mvn clean install -DskipTests
