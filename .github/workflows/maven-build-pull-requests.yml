@@ -12,20 +12,9 @@ jobs:
       - name: Iniciar container Keygen
         run: |
           docker pull isaacandra/keygen:latest
-          docker run -d -p 8085:8085 --name keygen \
+          docker run -d -p 8085:8085 --name keygen-service \
             -e KEYGEN_SERVER_PORT=8085 \
             isaacandra/keygen:latest
-
-      - name: Wait for Keygen to be ready
-        timeout-minutes: 2
-        run: |
-          echo "Verifing if Keygen is up..."
-          until curl -s http://localhost:8085/generate | grep -q '"status":"UP"'
-          do
-            echo "Waiting for Keygen..."
-            sleep 3
-          done
-          echo "Keygen is up and running!"
 
   test:
     runs-on: ubuntu-latest
