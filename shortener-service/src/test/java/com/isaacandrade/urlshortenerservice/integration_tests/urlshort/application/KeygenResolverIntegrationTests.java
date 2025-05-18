@@ -26,17 +26,13 @@ import static org.mockito.Mockito.when;
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class KeygenResolverIntegrationTests {
-    @Container
-    static GenericContainer<?> keyGenService = new GenericContainer<>("isaacandra/keygen:latest")
-            .withExposedPorts(8080)
-            .withEnv("KEYGEN_SERVER_PORT", "8080");
 
     private static KeyGenResolver resolver;
 
     @BeforeAll
     public static void setUp() {
-        String host = keyGenService.getHost();
-        Integer port = keyGenService.getMappedPort(8080);
+        String host = "localhost";
+        Integer port = 8085;
         WebClient webClient = WebClient.builder()
                 .baseUrl("http://" + host + ":" + port)
                 .build();

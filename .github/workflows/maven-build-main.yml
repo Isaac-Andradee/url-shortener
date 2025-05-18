@@ -8,6 +8,19 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      keygen:
+        image: isaacandra/keygen:latest
+        ports:
+          - 8085:8085
+        env:
+          KEYGEN_SERVER_PORT: 8085
+        options: >-
+          --health-cmd="curl --fail http://localhost:8080/actuator/health || exit 1"
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=10
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

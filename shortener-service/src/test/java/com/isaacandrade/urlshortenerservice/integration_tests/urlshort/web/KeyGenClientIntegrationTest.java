@@ -19,17 +19,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class KeyGenClientIntegrationTest {
-    @Container
-    static GenericContainer<?> keyGenService = new GenericContainer<>("isaacandra/keygen:latest")
-            .withExposedPorts(8080)
-            .withEnv("KEYGEN_SERVER_PORT", "8080");
 
     private KeyGenClient client;
 
     @BeforeAll
     void setUp() {
-        String host = keyGenService.getHost();
-        Integer port = keyGenService.getMappedPort(8080);
+        String host = "localhost";
+        Integer port = 8085;
         WebClient clientBuilder = WebClient.builder()
                 .baseUrl("http://" + host + ":" + port)
                 .build();

@@ -8,6 +8,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      keygen:
+        image: isaacandra/keygen:latest
+        ports:
+          - 8085:8085
+        env:
+          KEYGEN_SERVER_PORT: 8085
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
