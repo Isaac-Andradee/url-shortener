@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class KeygenResolverIntegrationTests {
     @Container
-    static GenericContainer<?> keyGenService = new GenericContainer<>("encurtingurl/keygen:latest")
+    static GenericContainer<?> keyGenService = new GenericContainer<>("isaacandra/keygen-service:latest")
             .withExposedPorts(8080)
             .withEnv("KEYGEN_SERVER_PORT", "8080");
 
