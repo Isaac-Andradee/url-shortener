@@ -3,6 +3,7 @@ package com.isaacandrade.keygeneratorservice.integration_tests.keygen.applicatio
 import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core.SequenceUpdater;
 import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.time.TimeStampProvider;
 import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.utils.SnowflakeConstants;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +21,11 @@ public class SequenceUpdaterIntegrationTest {
 
     @Autowired
     private TimeStampProvider timeStampProvider;
+
+    @BeforeEach
+    void setUp() {
+        sequenceUpdater.resetSequence();
+    }
 
     @Test
     void updateSequenceWith_sameTimestamp_incrementsSequence() {
