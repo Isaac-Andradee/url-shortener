@@ -20,3 +20,8 @@ spring:
       client-type: lettuce
   cache:
     type: ${SPRING_CACHE_TYPE}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}

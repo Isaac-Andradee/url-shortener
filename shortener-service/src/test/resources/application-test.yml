@@ -1,8 +1,6 @@
 server:
   port: 8080
 
-keygen.base_url: http://localhost:8080
-
 spring:
   data:
     mongodb:
@@ -21,3 +19,8 @@ spring:
     type: redis
 shortener:
     domain: http://localhost:80/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
