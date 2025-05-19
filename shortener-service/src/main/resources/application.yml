@@ -21,8 +21,10 @@ spring:
   cache:
     type: ${SPRING_CACHE_TYPE}
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
+
 shortener:
   domain: ${SHORTENER_DOMAIN}
-
-keygen:
-  base_url: ${KEYGEN_BASE_URL}

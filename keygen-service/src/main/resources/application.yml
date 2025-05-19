@@ -4,3 +4,8 @@ server:
 spring:
   application:
     name: keygen-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}

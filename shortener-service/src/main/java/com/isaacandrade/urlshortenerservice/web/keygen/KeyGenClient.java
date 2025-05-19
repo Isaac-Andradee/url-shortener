@@ -12,12 +12,12 @@ import java.util.Optional;
 public class KeyGenClient {
     private final WebClient webClient;
 
-    public KeyGenClient(WebClient webClient) {
-        this.webClient = webClient;
+    public KeyGenClient(WebClient.Builder builder) {
+        this.webClient = builder.build();
     }
 
     public String generateKey() {
-        return callKeygenService("/generate")
+        return callKeygenService("http://keygen-service/generate")
                 .orElseThrow(() -> new KeygenServiceUnvailableException("Keygen Service Is Unavailable"));
     }
 
