@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 public class AliasValidatorIntegrationTest {
     @Container
-    static MongoDBContainer mongo = new MongoDBContainer("mongo:7.0").withReuse(true);
+    static MongoDBContainer mongo = new MongoDBContainer("mongo:7.0");
 
     @DynamicPropertySource
     static void mongoProps(DynamicPropertyRegistry registry) {
