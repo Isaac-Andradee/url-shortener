@@ -20,6 +20,7 @@ import java.util.Optional;
 
 @Configuration
 @EnableConfigurationProperties
+@Profile("!test")
 public class EurekaClientConfig {
     private final ConfigurableEnvironment env;
 
@@ -29,9 +30,16 @@ public class EurekaClientConfig {
 
     @Bean
     @Primary
-    public EurekaInstanceConfigBean eurekaInstanceConfigBean(final InetUtils inetUtils) throws IOException {
+    public EurekaInstanceConfigBean eurekaInstanceConfigBean(final InetUtils inetUtils) {
         final String hostName = Optional.ofNullable(System.getenv("HOSTNAME"))
-                .orElse(InetAddress.getLocalHost().getHostName());
+                .filter(s -> !s.isBlank())
+                .orElseGet(() -> {
+                    try {
+                        return InetAddress.getLocalHost().getHostName();
+                    } catch (UnknownHostException e) {
+                        return "localhost";
+                    }
+                });
         String hostAddress = get(hostName);
 
         int nonSecurePort = Integer.parseInt(env.getProperty("server.port", env.getProperty("port", "8080")));
