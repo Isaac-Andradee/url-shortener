@@ -43,20 +43,20 @@ public class EurekaClientConfig {
         return instance;
     }
 
-    private static String get(String hostName) throws SocketException, UnknownHostException {
-        String hostAddress = null;
-
-        final Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
-        for (NetworkInterface netInt : Collections.list(networkInterfaces)) {
-            for (InetAddress inetAddress : Collections.list(netInt.getInetAddresses())) {
-                if (hostName.equals(inetAddress.getHostName())) {
-                    hostAddress = inetAddress.getHostAddress();
+    private static String get(String hostName) {
+        try {
+            for (NetworkInterface ni : Collections.list(NetworkInterface.getNetworkInterfaces())) {
+                for (InetAddress ia : Collections.list(ni.getInetAddresses())) {
+                    if (hostName.equalsIgnoreCase(ia.getHostName())) {
+                        return ia.getHostAddress();
+                    }
                 }
             }
+        } catch (SocketException ignored) { }
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            return "127.0.0.1";
         }
-        if (hostAddress == null) {
-            throw new UnknownHostException("Cannot find ip address for hostname: " + hostName);
-        }
-        return hostAddress;
     }
 }
