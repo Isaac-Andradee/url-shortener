@@ -73,17 +73,6 @@
 			<groupId>com.github.ben-manes.caffeine</groupId>
 			<artifactId>caffeine</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>io.github.shiyouping</groupId>
-			<artifactId>embedded-redis-cluster</artifactId>
-			<version>0.0.4</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.17.0</version>
-		</dependency>
 	</dependencies>
 
 	<build>

@@ -20,7 +20,6 @@ import java.util.Optional;
 
 @Configuration
 @EnableConfigurationProperties
-@Profile("!test")
 public class EurekaClientConfig {
     private final ConfigurableEnvironment env;
 

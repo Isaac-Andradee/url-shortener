@@ -1,5 +1,6 @@
 package com.isaacandrade.urlshortenerservice.unit_tests.urlshort.exception.message;
 
+import com.isaacandrade.urlshortenerservice.urlshort.exception.KeygenServiceUnvailableException;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.message.KeygenServiceUnavailableMessage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,6 +17,9 @@ public class KeygenServiceUnavailableMessageTest {
     @Mock
     private KeygenServiceUnavailableMessage message;
 
+    @Mock
+    private KeygenServiceUnvailableException exception;
+
     @Test
     void constructorShouldSetFieldsCorrectly() {
         message = new KeygenServiceUnavailableMessage(503, "Keygen Service Is Unavailable");
@@ -30,5 +34,12 @@ public class KeygenServiceUnavailableMessageTest {
         message.setMessage("Internal Server Error");
         assertEquals(500, message.getStatus());
         assertEquals("Internal Server Error", message.getMessage());
+    }
+
+    @Test
+    void shouldReturnExceptionMessage_whenExceptionIsPassed() {
+        exception = new KeygenServiceUnvailableException();
+        String result = exception.getMessage() ;
+        assertEquals("Keygen Service Is Unavailable", result);
     }
 }
