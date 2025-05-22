@@ -1,2 +1,6 @@
 server:
   port: ${KEYGEN_SERVER_PORT:8085}
+
+eureka:
+  client:
+    enabled: false

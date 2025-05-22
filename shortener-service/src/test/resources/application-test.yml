@@ -25,5 +25,9 @@ spring:
   cache:
     type: redis
 
+eureka:
+  client:
+    enabled: false
+
 shortener:
   domain: http://localhost:80/
