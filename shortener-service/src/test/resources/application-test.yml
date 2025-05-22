@@ -22,12 +22,20 @@ spring:
           - localhost:6379
       timeout: 6000
 
+  cloud:
+    discovery:
+      enabled: false
+
   cache:
     type: redis
 
 eureka:
   client:
+    register-with-eureka: false
+    fetch-registry: false
     enabled: false
+
+
 
 shortener:
   domain: http://localhost:80/
