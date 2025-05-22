@@ -3,25 +3,28 @@ server:
 
 spring:
   application:
-    name: url-resolver
+    name: resolver-service
   data:
     mongodb:
       host: ${MONGO_HOST}
       port: ${MONGO_PORT}
-      uri: mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
+      uri: mongodb://${MONGOS_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
       username: ${MONGO_USERNAME}
       password: ${MONGO_PASSWORD}
       database: ${MONGO_DATABASE}
 
     redis:
-      host: ${REDIS_HOST}
       port: ${REDIS_PORT}
       password: ${REDIS_PASSWORD}
       client-type: lettuce
+      cluster:
+        nodes:
+          - ${REDIS_NODE_1}
+          - ${REDIS_NODE_2}
+          - ${REDIS_NODE_3}
+          - ${REDIS_NODE_4}
+          - ${REDIS_NODE_5}
+          - ${REDIS_NODE_6}
+      timeout: ${REDIS_TIMEOUT}
   cache:
     type: ${SPRING_CACHE_TYPE}
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}

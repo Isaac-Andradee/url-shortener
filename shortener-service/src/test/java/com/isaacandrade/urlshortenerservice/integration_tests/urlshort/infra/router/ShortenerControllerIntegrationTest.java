@@ -1,6 +1,7 @@
 package com.isaacandrade.urlshortenerservice.integration_tests.urlshort.infra.router;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.isaacandrade.urlshortenerservice.integration_tests.urlshort.config.BaseIntegrationTest;
 import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenRequest;
 import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenResponse;
 import com.isaacandrade.urlshortenerservice.urlshort.infra.router.ShortenerController;
@@ -22,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class ShortenerControllerIntegrationTest {
+public class ShortenerControllerIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 

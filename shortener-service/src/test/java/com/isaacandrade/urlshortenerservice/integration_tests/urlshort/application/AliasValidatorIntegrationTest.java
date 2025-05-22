@@ -2,32 +2,18 @@ package com.isaacandrade.urlshortenerservice.integration_tests.urlshort.applicat
 
 import com.isaacandrade.common.url.model.UrlMapping;
 import com.isaacandrade.common.url.repository.UrlRepository;
+import com.isaacandrade.urlshortenerservice.integration_tests.urlshort.config.BaseIntegrationTest;
 import com.isaacandrade.urlshortenerservice.urlshort.application.AliasValidator;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasNotAvailableException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.MongoDBContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@Testcontainers
 @ActiveProfiles("test")
-public class AliasValidatorIntegrationTest {
-    @Container
-    static MongoDBContainer mongo = new MongoDBContainer("mongo:7.0").withReuse(true);
-
-    @DynamicPropertySource
-    static void mongoProps(DynamicPropertyRegistry registry) {
-        registry.add("spring.data.mongodb.uri", mongo::getReplicaSetUrl);
-    }
+public class AliasValidatorIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     AliasValidator aliasValidator;

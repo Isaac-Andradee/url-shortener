@@ -2,9 +2,11 @@ package com.isaacandrade.urlshortenerservice.web.keygen;
 
 
 import com.isaacandrade.urlshortenerservice.urlshort.exception.KeygenServiceUnvailableException;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.Duration;
 import java.util.Map;
 import java.util.Optional;
 
@@ -12,7 +14,7 @@ import java.util.Optional;
 public class KeyGenClient {
     private final WebClient webClient;
 
-    public KeyGenClient(WebClient.Builder builder) {
+    public KeyGenClient(@LoadBalanced WebClient.Builder builder) {
         this.webClient = builder.build();
     }
 

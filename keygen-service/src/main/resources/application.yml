@@ -4,8 +4,23 @@ server:
 spring:
   application:
     name: keygen-service
+  cloud:
+    loadbalancer:
+      cache:
+        enabled: true
+        caffeine:
+          spec: maximumSize=1000,expireAfterAccess=5m
+    inetutils:
+      preferred-networks:
+        - 10.0
 
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
