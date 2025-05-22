@@ -1,26 +1,50 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
+  application:
+    name: shortener-service
   data:
     mongodb:
       host: localhost
       port: 27017
-      database: shortener-test
       uri: mongodb://localhost:27017/shortener-test
       username: root
       password: test
+      database: shortener-test
+
     redis:
-      host: localhost
       port: 6379
       password: test
       client-type: lettuce
+      cluster:
+        nodes:
+          - localhost:6379
+      timeout: 6000
+
   cache:
     type: redis
-shortener:
-    domain: http://localhost:80/
+
+  cloud:
+    loadbalancer:
+      cache:
+        enabled: true
+        caffeine:
+          spec: maximumSize=1000,expireAfterAccess=5m
+    inetutils:
+      preferred-networks:
+        - 10.0
 
 eureka:
   client:
-    service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    preferIpAddress: true
+    instance-id: shortener-service:test
+
+shortener:
+  domain: http://localhost:80/

@@ -3,28 +3,51 @@ server:
 
 spring:
   application:
-    name: url-shortener
+    name: shortener-service
   data:
     mongodb:
       host: ${MONGO_HOST}
       port: ${MONGO_PORT}
-      uri: mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
+      uri: mongodb://${MONGOS_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
       username: ${MONGO_USERNAME}
       password: ${MONGO_PASSWORD}
       database: ${MONGO_DATABASE}
 
     redis:
-      host: ${REDIS_HOST}
       port: ${REDIS_PORT}
       password: ${REDIS_PASSWORD}
       client-type: lettuce
+      cluster:
+        nodes:
+          - ${REDIS_NODE_1}
+          - ${REDIS_NODE_2}
+          - ${REDIS_NODE_3}
+          - ${REDIS_NODE_4}
+          - ${REDIS_NODE_5}
+          - ${REDIS_NODE_6}
+      timeout: ${REDIS_TIMEOUT}
   cache:
     type: ${SPRING_CACHE_TYPE}
+  cloud:
+    loadbalancer:
+      cache:
+        enabled: true
+        caffeine:
+          spec: maximumSize=1000,expireAfterAccess=5m
+    inetutils:
+      preferred-networks:
+        - 10.0
 
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: true
     serviceUrl:
       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
+
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 shortener:
   domain: ${SHORTENER_DOMAIN}

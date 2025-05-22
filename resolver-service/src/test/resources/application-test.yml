@@ -1,19 +1,26 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
+  application:
+    name: shortener-service
   data:
     mongodb:
       host: localhost
       port: 27017
-      database: resolver-test
-      uri: mongodb://localhost:27017/resolver-test
+      uri: mongodb://localhost:27017/shortener-test
       username: root
       password: test
+      database: shortener-test
+
     redis:
-      host: localhost
       port: 6379
       password: test
       client-type: lettuce
+      cluster:
+        nodes:
+          - localhost:6379
+      timeout: 6000
+
   cache:
     type: redis
