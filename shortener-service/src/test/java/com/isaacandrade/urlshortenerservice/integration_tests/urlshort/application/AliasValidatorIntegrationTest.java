@@ -2,6 +2,7 @@ package com.isaacandrade.urlshortenerservice.integration_tests.urlshort.applicat
 
 import com.isaacandrade.common.url.model.UrlMapping;
 import com.isaacandrade.common.url.repository.UrlRepository;
+import com.isaacandrade.urlshortenerservice.integration_tests.urlshort.application.config.BaseEurekaServerTest;
 import com.isaacandrade.urlshortenerservice.urlshort.application.AliasValidator;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasNotAvailableException;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,13 +21,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Testcontainers
 @ActiveProfiles("test")
-public class AliasValidatorIntegrationTest {
+public class AliasValidatorIntegrationTest extends BaseEurekaServerTest {
     @Container
     static MongoDBContainer mongo = new MongoDBContainer("mongo:7.0").withReuse(true);
 
     @DynamicPropertySource
     static void mongoProps(DynamicPropertyRegistry registry) {
-        registry.add("spring.data.mongodb.uri", mongo::getReplicaSetUrl);
+        registry.add("spring.data.mongodb.uri", mongo::getConnectionString);
     }
 
     @Autowired
