@@ -1,6 +1,7 @@
 server:
   port: ${SHORTENER_SERVER_PORT}
 
+
 spring:
   application:
     name: shortener-service
@@ -51,3 +52,7 @@ eureka:
 
 shortener:
   domain: ${SHORTENER_DOMAIN}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

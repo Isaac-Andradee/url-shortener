@@ -2,9 +2,9 @@ package com.isaacandrade.urlshortenerservice.urlshort.application;
 
 import com.isaacandrade.common.url.model.UrlMapping;
 import com.isaacandrade.urlshortenerservice.config.ShortenerProperties;
-import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenResponse;
+import com.isaacandrade.common.url.model.dto.ShortenResponse;
 import com.isaacandrade.urlshortenerservice.urlshort.infra.DB.DbCacheSaver;
-import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenRequest;
+import com.isaacandrade.common.url.model.dto.ShortenRequest;
 import org.springframework.stereotype.Service;
 
 

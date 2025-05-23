@@ -28,3 +28,7 @@ spring:
       timeout: ${REDIS_TIMEOUT}
   cache:
     type: ${SPRING_CACHE_TYPE}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
