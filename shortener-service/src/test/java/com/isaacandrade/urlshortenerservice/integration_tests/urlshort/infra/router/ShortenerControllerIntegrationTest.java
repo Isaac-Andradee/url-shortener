@@ -2,8 +2,8 @@ package com.isaacandrade.urlshortenerservice.integration_tests.urlshort.infra.ro
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.isaacandrade.urlshortenerservice.integration_tests.urlshort.config.BaseIntegrationTest;
-import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenRequest;
-import com.isaacandrade.urlshortenerservice.urlshort.application.dto.ShortenResponse;
+import com.isaacandrade.common.url.model.dto.ShortenRequest;
+import com.isaacandrade.common.url.model.dto.ShortenResponse;
 import com.isaacandrade.urlshortenerservice.urlshort.infra.router.ShortenerController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.isaacandrade.urlshortenerservice.urlshort.application.dto;
+package com.isaacandrade.common.url.model.dto;
 
 import java.io.Serializable;
 
