@@ -19,6 +19,7 @@ import java.lang.annotation.*;
                 ),
                 @ApiResponse(description = "Conflict", responseCode = "409", content = @Content),
                 @ApiResponse(description = "Unavailable Service", responseCode = "503", content = @Content),
+                @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content)
         }
 )
 public @interface ShortenUrlOperation {

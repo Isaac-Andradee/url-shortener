@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 public class ShortenerUseCase {
 
     private final ShortenerProperties domainProperties;
-    private final AliasValidator aliasValidator;
+    private final AliasValidationComposite aliasValidation;
     private final KeyGenResolver keyGenResolver;
     private final DbCacheSaver dbCacheSaver;
 
-    public ShortenerUseCase(ShortenerProperties domainProperties, AliasValidator aliasValidator, KeyGenResolver keyGenResolver, DbCacheSaver dbCacheSaver) {
+    public ShortenerUseCase(ShortenerProperties domainProperties, AliasValidationComposite aliasValidation, KeyGenResolver keyGenResolver, DbCacheSaver dbCacheSaver) {
         this.domainProperties = domainProperties;
-        this.aliasValidator = aliasValidator;
+        this.aliasValidation = aliasValidation;
         this.keyGenResolver = keyGenResolver;
         this.dbCacheSaver = dbCacheSaver;
     }
@@ -32,7 +32,7 @@ public class ShortenerUseCase {
     }
 
     private void validateAlias(String alias) {
-        aliasValidator.validateIfExistInDb(alias);
+        aliasValidation.validate(alias);
     }
 
     private String generateShortKey(String alias) {

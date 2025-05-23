@@ -1,7 +1,9 @@
 package com.isaacandrade.urlshortenerservice.urlshort.infra.exceptionhandler;
 
+import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasInvalidFormatException;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasNotAvailableException;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.KeygenServiceUnvailableException;
+import com.isaacandrade.urlshortenerservice.urlshort.exception.message.AliasInvalidFormatMessage;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.message.AliasNotAvailableMessage;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.message.KeygenServiceUnavailableMessage;
 import org.springframework.http.HttpStatus;
@@ -23,5 +25,11 @@ public class UrlShortenerExceptionHandler extends ResponseEntityExceptionHandler
     public ResponseEntity<KeygenServiceUnavailableMessage> keygenServiceUnvailableHandler(KeygenServiceUnvailableException e) {
         KeygenServiceUnavailableMessage response = new KeygenServiceUnavailableMessage(HttpStatus.SERVICE_UNAVAILABLE.value(), e.getMessage());
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(response);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<AliasInvalidFormatMessage> aliasInvalidFormatHandler(AliasInvalidFormatException e) {
+        AliasInvalidFormatMessage response = new AliasInvalidFormatMessage(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 }
