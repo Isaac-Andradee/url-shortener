@@ -3,7 +3,6 @@ package com.isaacandrade.urlshortenerservice.unit_tests.urlshort.application;
 import com.isaacandrade.common.url.model.UrlMapping;
 import com.isaacandrade.common.url.repository.UrlRepository;
 import com.isaacandrade.urlshortenerservice.urlshort.application.AliasAvailabilityValidator;
-import com.isaacandrade.urlshortenerservice.urlshort.application.AliasValidator;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasNotAvailableException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

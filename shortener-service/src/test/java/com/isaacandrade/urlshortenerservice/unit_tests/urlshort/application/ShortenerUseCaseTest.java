@@ -1,12 +1,11 @@
 package com.isaacandrade.urlshortenerservice.unit_tests.urlshort.application;
 
 import com.isaacandrade.urlshortenerservice.config.ShortenerProperties;
-import com.isaacandrade.urlshortenerservice.urlshort.application.AliasValidator;
+import com.isaacandrade.urlshortenerservice.urlshort.application.AliasValidationComposite;
 import com.isaacandrade.urlshortenerservice.urlshort.application.KeyGenResolver;
 import com.isaacandrade.urlshortenerservice.urlshort.application.ShortenerUseCase;
 import com.isaacandrade.common.url.model.dto.ShortenRequest;
 import com.isaacandrade.common.url.model.dto.ShortenResponse;
-import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasNotAvailableException;
 import com.isaacandrade.urlshortenerservice.urlshort.infra.DB.DbCacheSaver;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,49 +18,83 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ShortenerUseCaseTest {
+
     @Mock
-    ShortenerProperties shortenerProperties;
+    private ShortenerProperties domainProperties;
+
     @Mock
-    AliasValidator aliasValidator;
+    private AliasValidationComposite aliasValidation;
+
     @Mock
-    KeyGenResolver keyGenResolver;
+    private KeyGenResolver keyGenResolver;
+
     @Mock
-    DbCacheSaver dbCacheSaver;
+    private DbCacheSaver dbCacheSaver;
+
     @InjectMocks
-    ShortenerUseCase shortenerUseCase;
+    private ShortenerUseCase useCase;
 
     @Test
-    public void shorten_shouldReturnShortenResponse_whenAliasProvided() {
-        String usingAlias = "google";
-        ShortenRequest request = new ShortenRequest("https://www.google.com", usingAlias);
-        String baseUrl = "https://shorting.com/";
-        when(keyGenResolver.resolveShortKey(usingAlias)).thenReturn(usingAlias);
-        when(shortenerProperties.toString()).thenReturn(baseUrl);
-        ShortenResponse response = shortenerUseCase.shorten(request);
-        assertEquals(baseUrl + usingAlias, response.shortUrl());
+    void shorten_withValidAlias_returnsShortUrl() {
+        // arrange
+        String alias = "myAlias";
+        String longUrl = "https://example.com";
+        ShortenRequest req = new ShortenRequest(longUrl, alias);
+        when(keyGenResolver.resolveShortKey(alias)).thenReturn(alias);
+        when(domainProperties.toString()).thenReturn("https://short.ly/");
+
+        // act
+        ShortenResponse resp = useCase.shorten(req);
+
+        // assert
+        assertEquals("https://short.ly/" + alias, resp.shortUrl());
+        verify(aliasValidation).validate(alias);
+        verify(keyGenResolver).resolveShortKey(alias);
+        verify(dbCacheSaver).saveUrlMapping(
+                argThat(mapping ->
+                        mapping.getShortKey().equals(alias) &&
+                                mapping.getLongUrl().equals(longUrl) &&
+                                mapping.getAlias().equals(alias)
+                )
+        );
     }
 
     @Test
-    public void shorten_shouldThrowException_whenAliasAlreadyExists() {
-        ShortenRequest request = new ShortenRequest("https://www.google.com", "alreadyExists");
-        doThrow(new AliasNotAvailableException())
-                .when(aliasValidator).validateIfExistInDb("alreadyExists");
-        assertThrows(AliasNotAvailableException.class, () -> {
-            shortenerUseCase.shorten(request);
-        });
-        verify(aliasValidator).validateIfExistInDb("alreadyExists");
+    void shorten_whenAliasInvalid_throwsAndSkipsGeneration() {
+        // arrange
+        String alias = "bad!";
+        ShortenRequest req = new ShortenRequest("https://x.com", alias);
+        doThrow(new IllegalArgumentException("Invalid"))
+                .when(aliasValidation).validate(alias);
+
+        // act & assert
+        assertThrows(IllegalArgumentException.class, () -> useCase.shorten(req));
+        verify(aliasValidation).validate(alias);
         verifyNoInteractions(keyGenResolver);
         verifyNoInteractions(dbCacheSaver);
     }
 
     @Test
-    public void shorten_shouldGenerateKey_whenAliasIsNull() {
-        ShortenRequest request = new ShortenRequest("https://www.google.com", null);
-        String generatedKey = "base62key";
-        String baseUrl = "https://shorting.com/";
-        when(keyGenResolver.resolveShortKey(null)).thenReturn(generatedKey);
-        when(shortenerProperties.toString()).thenReturn(baseUrl);
-        ShortenResponse response = shortenerUseCase.shorten(request);
-        assertEquals(baseUrl + generatedKey, response.shortUrl());
+    void shorten_withoutAlias_generatesKeyAndSaves() {
+        // arrange
+        String generated = "abc123";
+        ShortenRequest req = new ShortenRequest("https://foo.com", null);
+        when(keyGenResolver.resolveShortKey(null)).thenReturn(generated);
+        when(domainProperties.toString()).thenReturn("https://short.ly/");
+
+        // act
+        ShortenResponse resp = useCase.shorten(req);
+
+        // assert
+        assertEquals("https://short.ly/" + generated, resp.shortUrl());
+        verify(aliasValidation).validate(null);
+        verify(keyGenResolver).resolveShortKey(null);
+        verify(dbCacheSaver).saveUrlMapping(
+                argThat(mapping ->
+                        mapping.getShortKey().equals(generated) &&
+                                mapping.getLongUrl().equals("https://foo.com") &&
+                                mapping.getAlias() == null
+                )
+        );
     }
 }

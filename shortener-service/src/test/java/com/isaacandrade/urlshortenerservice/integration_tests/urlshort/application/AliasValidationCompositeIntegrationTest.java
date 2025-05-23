@@ -5,6 +5,7 @@ import com.isaacandrade.common.url.repository.UrlRepository;
 import com.isaacandrade.urlshortenerservice.integration_tests.urlshort.config.BaseIntegrationTest;
 import com.isaacandrade.urlshortenerservice.urlshort.application.AliasValidationComposite;
 import com.isaacandrade.urlshortenerservice.urlshort.application.AliasValidator;
+import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasInvalidFormatException;
 import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasNotAvailableException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,8 +30,8 @@ public class AliasValidationCompositeIntegrationTest extends BaseIntegrationTest
 
     @Test
     void validate_shouldThrowInvalidFormat_forBadAlias() {
-        String bad = "bad alias!";
-        assertThrows(IllegalArgumentException.class, () ->
+        String bad = "--badalias!";
+        assertThrows(AliasInvalidFormatException.class, () ->
                 aliasValidationComposite.validate(bad)
         );
     }
@@ -58,3 +59,4 @@ public class AliasValidationCompositeIntegrationTest extends BaseIntegrationTest
                 aliasValidationComposite.validate(alias)
         );
     }
+}
