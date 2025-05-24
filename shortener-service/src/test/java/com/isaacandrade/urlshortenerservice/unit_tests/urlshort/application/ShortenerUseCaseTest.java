@@ -36,17 +36,12 @@ public class ShortenerUseCaseTest {
 
     @Test
     void shorten_withValidAlias_returnsShortUrl() {
-        // arrange
         String alias = "myAlias";
         String longUrl = "https://example.com";
         ShortenRequest req = new ShortenRequest(longUrl, alias);
         when(keyGenResolver.resolveShortKey(alias)).thenReturn(alias);
         when(domainProperties.toString()).thenReturn("https://short.ly/");
-
-        // act
         ShortenResponse resp = useCase.shorten(req);
-
-        // assert
         assertEquals("https://short.ly/" + alias, resp.shortUrl());
         verify(aliasValidation).validate(alias);
         verify(keyGenResolver).resolveShortKey(alias);
@@ -61,13 +56,10 @@ public class ShortenerUseCaseTest {
 
     @Test
     void shorten_whenAliasInvalid_throwsAndSkipsGeneration() {
-        // arrange
         String alias = "bad!";
         ShortenRequest req = new ShortenRequest("https://x.com", alias);
         doThrow(new IllegalArgumentException("Invalid"))
                 .when(aliasValidation).validate(alias);
-
-        // act & assert
         assertThrows(IllegalArgumentException.class, () -> useCase.shorten(req));
         verify(aliasValidation).validate(alias);
         verifyNoInteractions(keyGenResolver);
@@ -76,16 +68,11 @@ public class ShortenerUseCaseTest {
 
     @Test
     void shorten_withoutAlias_generatesKeyAndSaves() {
-        // arrange
         String generated = "abc123";
         ShortenRequest req = new ShortenRequest("https://foo.com", null);
         when(keyGenResolver.resolveShortKey(null)).thenReturn(generated);
         when(domainProperties.toString()).thenReturn("https://short.ly/");
-
-        // act
         ShortenResponse resp = useCase.shorten(req);
-
-        // assert
         assertEquals("https://short.ly/" + generated, resp.shortUrl());
         verify(aliasValidation).validate(null);
         verify(keyGenResolver).resolveShortKey(null);
