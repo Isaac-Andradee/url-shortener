@@ -6,7 +6,6 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.time.Duration;
 import java.util.Map;
 import java.util.Optional;
 
@@ -19,14 +18,14 @@ public class KeyGenClient {
     }
 
     public String generateKey() {
-        return callKeygenService("http://keygen-service/generate")
+        return callKeygenService()
                 .orElseThrow(() -> new KeygenServiceUnvailableException("Keygen Service Is Unavailable"));
     }
 
-    private Optional<String> callKeygenService(String url) {
+    private Optional<String> callKeygenService() {
         try {
             return Optional.ofNullable(webClient.get()
-                    .uri(url)
+                    .uri("http://keygen-service/generate")
                     .retrieve()
                     .bodyToMono(Map.class)
                     .map(response -> (String) response.get("shortKey"))
