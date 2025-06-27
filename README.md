@@ -2,10 +2,9 @@
 
 [![GitHub Stars](https://img.shields.io/github/stars/Isaac-Andradee/short4us.svg)](https://github.com/Isaac-Andradee/short4us/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/Isaac-Andradee/short4us.svg)](https://github.com/Isaac-Andradee/short4us/issues)
-[![Current Version](https://img.shields.io/badge/version-0.1.0-green.svg)](https://github.com/Isaac-Andradee/short4us)
+[![Current Version](https://img.shields.io/github/v/release/Isaac-Andradee/short4us)](https://github.com/Isaac-Andradee/short4us/releases)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/Isaac-Andradee/short4us/.github%2Fworkflows%2Fmaven-build-main.yml)](https://github.com/Isaac-Andradee/short4us/actions/workflows/maven-build-main.yml)
 [![Contributions](https://img.shields.io/github/contributors/Isaac-Andradee/short4us.svg)](https://github.com/Isaac-Andradee/short4us/graphs/contributors)
-![In Development](https://img.shields.io/badge/status-in_development-yellow)
 [![Top Language](https://img.shields.io/github/languages/top/Isaac-Andradee/short4us)](https://github.com/search?q=repo%3AIsaac-Andradee%2Fshort4us++language%3AJava&type=code)
 
 Short4Us is a URL shortening system developed with Spring Boot and microservice architecture. The system is fully scalable using Docker Swarm, allowing you to shorten long URLs efficiently and reliably.
