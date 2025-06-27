@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short 4Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Short 4Us</h1>
+        
+        <form id="shortenerForm">
+            <div class="input-group">
+                <label for="longUrl">Shorten a long URL:</label>
+                <input type="url" id="longUrl" name="longUrl" placeholder="https://exemple.com/very-long-url">
+            </div>
+            
+            <div class="input-group">
+                <label for="alias">Custom Alias (opcional):</label>
+                <input type="text" id="alias" name="alias" placeholder="my-link">
+                <div id="aliasRules" class="alias-rules">
+                    <p>Your alias needs to:</p>
+                    <ul id="aliasRulesList"></ul>
+                </div>
+            </div>
+            
+            <button type="submit">Shorten</button>
+        </form>
+        
+        <div id="resultArea">
+            <p id="message"></p>
+            <a id="shortenedUrl" href="#" target="_blank"></a>
+        </div>
+
+        <script type="module" src="js/index.js"></script>
+    </div>
+</body>
+</html>

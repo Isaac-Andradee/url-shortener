@@ -7,9 +7,7 @@ spring:
     name: shortener-service
   data:
     mongodb:
-      host: ${MONGO_HOST}
-      port: ${MONGO_PORT}
-      uri: mongodb://${MONGOS_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
+      uri: ${MONGO_URI}
       username: ${MONGO_USERNAME}
       password: ${MONGO_PASSWORD}
       database: ${MONGO_DATABASE}
