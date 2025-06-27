@@ -1,7 +1,7 @@
 # Short4Us: A URL Shortener with Spring Boot
 
 [![GitHub Stars](https://img.shields.io/github/stars/Isaac-Andradee/short4us.svg)](https://github.com/Isaac-Andradee/short4us/stargazers)
-[![GitHub Issues](https://img.shields.io/github/issues/Isaac-Andradee/short4us.svg)](https://github.com/Isaac-Andradee/short4us/issues) 
+[![GitHub Issues](https://img.shields.io/github/issues/Isaac-Andradee/short4us.svg)](https://github.com/Isaac-Andradee/short4us/issues)
 [![Current Version](https://img.shields.io/badge/version-0.1.0-green.svg)](https://github.com/Isaac-Andradee/short4us)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/Isaac-Andradee/short4us/.github%2Fworkflows%2Fmaven-build-main.yml)](https://github.com/Isaac-Andradee/short4us/actions/workflows/maven-build-main.yml)
 [![Contributions](https://img.shields.io/github/contributors/Isaac-Andradee/short4us.svg)](https://github.com/Isaac-Andradee/short4us/graphs/contributors)
@@ -40,24 +40,24 @@ Before deploying the application, you need to set up a MongoDB Atlas cluster:
 
 1. **Create a MongoDB Atlas Account**: Go to [MongoDB Atlas](https://www.mongodb.com/atlas) and create an account.
 
-2. **Create a Cluster**: 
-   - Create a new cluster (M0 free tier is sufficient for testing)
-   - Choose your preferred cloud provider and region
-   - Name your cluster (e.g., "short4us-cluster")
+2. **Create a Cluster**:
+    - Create a new cluster (M0 free tier is sufficient for testing)
+    - Choose your preferred cloud provider and region
+    - Name your cluster (e.g., "short4us-cluster")
 
 3. **Configure Database Access**:
-   - Go to "Database Access" in the Atlas dashboard
-   - Create a database user with read/write permissions
-   - Note down the username and password
+    - Go to "Database Access" in the Atlas dashboard
+    - Create a database user with read/write permissions
+    - Note down the username and password
 
 4. **Configure Network Access**:
-   - Go to "Network Access" in the Atlas dashboard
-   - Add your IP address or `0.0.0.0/0` for testing (not recommended for production)
+    - Go to "Network Access" in the Atlas dashboard
+    - Add your IP address or `0.0.0.0/0` for testing (not recommended for production)
 
 5. **Get Connection String**:
-   - Go to "Clusters" and click "Connect"
-   - Choose "Connect your application"
-   - Copy the connection string (it will look like: `mongodb+srv://username:password@cluster.xxxxx.mongodb.net/`)
+    - Go to "Clusters" and click "Connect"
+    - Choose "Connect your application"
+    - Copy the connection string (it will look like: `mongodb+srv://username:password@cluster.xxxxx.mongodb.net/`)
 
 ## Environment Variables
 
@@ -233,4 +233,4 @@ Contributions are welcome! To contribute:
 
 ## Contact
 
-Isaac Andrade - <a href = "mailto:isaac.andra84@gmail.com">@IsaacAndrade<a/>
+Isaac Andrade - [@Isaac-Andradee](isaac.andra84@gmail.com)

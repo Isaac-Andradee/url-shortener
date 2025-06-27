@@ -1,0 +1,200 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    image: nginx:latest
+    volumes:
+      - ./api-gateway/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    networks:
+      - default
+
+  # -------------------- Redis Clusters----------------------------------------
+
+  redis-node-1:
+    image: redis:latest
+    volumes:
+      - redis1-data:/data/redis
+    depends_on:
+      - redis-node-2
+      - redis-node-3
+      - redis-node-4
+      - redis-node-5
+      - redis-node-6
+    command: >
+      redis-server --port 6379
+                   --cluster-enabled yes
+                   --cluster-config-file nodes.conf
+                   --cluster-node-timeout 5000
+                   --appendonly yes
+                   --cluster-announce-ip redis-node-1
+                   --cluster-announce-port 6379
+                   --cluster-announce-bus-port 16379
+    ports:
+      - "7001:6379"
+      - "17001:16379"
+    networks:
+      - default
+    deploy:
+      replicas: 1
+
+  redis-node-2:
+    image: redis:latest
+    volumes:
+      - redis2-data:/data/redis
+    command: >
+      redis-server --port 6379
+                   --cluster-enabled yes
+                   --cluster-config-file nodes.conf
+                   --cluster-node-timeout 5000
+                   --appendonly yes
+                   --cluster-announce-ip redis-node-2
+                   --cluster-announce-port 6379
+                   --cluster-announce-bus-port 16379
+    ports:
+      - "7002:6379"
+      - "17002:16379"
+    networks:
+      - default
+    deploy:
+      replicas: 1
+
+  redis-node-3:
+    image: redis:latest
+    volumes:
+      - redis3-data:/data/redis
+    command: >
+      redis-server --port 6379
+                   --cluster-enabled yes
+                   --cluster-config-file nodes.conf
+                   --cluster-node-timeout 5000
+                   --appendonly yes
+                   --cluster-announce-ip redis-node-3
+                   --cluster-announce-port 6379
+                   --cluster-announce-bus-port 16379
+    ports:
+      - "7003:6379"
+      - "17003:16379"
+    networks:
+      - default
+    deploy:
+      replicas: 1
+
+  redis-node-4:
+    image: redis:latest
+    volumes:
+      - redis4-data:/data/redis
+    command: >
+      redis-server --port 6379
+                   --cluster-enabled yes
+                   --cluster-config-file nodes.conf
+                   --cluster-node-timeout 5000
+                   --appendonly yes
+                   --cluster-announce-ip redis-node-4
+                   --cluster-announce-port 6379
+                   --cluster-announce-bus-port 16379
+    ports:
+      - "7004:6379"
+      - "17004:16379"
+    networks:
+      - default
+    deploy:
+      replicas: 1
+
+  redis-node-5:
+    image: redis:latest
+    volumes:
+      - redis5-data:/data/redis
+    command: >
+      redis-server --port 6379
+                   --cluster-enabled yes
+                   --cluster-config-file nodes.conf
+                   --cluster-node-timeout 5000
+                   --appendonly yes
+                   --cluster-announce-ip redis-node-5
+                   --cluster-announce-port 6379
+                   --cluster-announce-bus-port 16379
+    ports:
+      - "7005:6379"
+      - "17005:16379"
+    networks:
+      - default
+    deploy:
+      replicas: 1
+
+  redis-node-6:
+    image: redis:latest
+    volumes:
+      - redis6-data:/data/redis
+    command: >
+      redis-server --port 6379
+                   --cluster-enabled yes
+                   --cluster-config-file nodes.conf
+                   --cluster-node-timeout 5000
+                   --appendonly yes
+                   --cluster-announce-ip redis-node-6
+                   --cluster-announce-port 6379
+                   --cluster-announce-bus-port 16379
+    ports:
+      - "7006:6379"
+      - "17006:16379"
+    networks:
+      - default
+    deploy:
+      replicas: 1
+
+  eureka-server:
+    image: isaacandra/eureka:latest
+    env_file:
+      - .env
+    ports:
+      - "8761:8761"
+    networks:
+      - default
+
+  shortener-service:
+    image: isaacandra/shortener-service:latest
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    deploy:
+      replicas: 1
+    networks:
+      - default
+
+  resolver-service:
+    image: isaacandra/resolver-service:latest
+    env_file:
+      - .env
+    ports:
+      - '8083:8083'
+    deploy:
+      replicas: 1
+    networks:
+      - default
+
+  keygen-service:
+    image: isaacandra/keygen-service:latest
+    env_file:
+      - .env
+    ports:
+      - "8081:8081"
+    deploy:
+      replicas: 1
+    networks:
+      - default
+
+volumes:
+  redis1-data:
+  redis2-data:
+  redis3-data:
+  redis4-data:
+  redis5-data:
+  redis6-data:
+
+networks:
+  default:
+    driver: overlay
+    attachable: true
