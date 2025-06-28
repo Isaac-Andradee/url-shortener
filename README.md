@@ -23,6 +23,9 @@ Short4Us consists of several microservices working together:
 
 The application uses Redis for high-performance caching and MongoDB Atlas for persistent storage, designed to scale horizontally.
 
+> [!TIP]
+> You can see the system and service design flow [here](https://github.com/Isaac-Andradee/short4us/blob/main/SYSTEM-DESIGN.md)
+
 ## Prerequisites
 
 To run Short4Us, you'll need:
