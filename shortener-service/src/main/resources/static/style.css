@@ -1,149 +1,148 @@
 body {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .container {
-    background-color: #fff;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 25px;
-    font-size: 1.8em;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8em;
 }
 
 .input-group {
-    margin-bottom: 20px;
-    text-align: left;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .input-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: bold;
 }
 
 input[type="url"],
 input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1em;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1em;
 }
 
 input[type="url"]:focus,
 input[type="text"]:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
 }
 
 button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 #resultArea {
-    margin-top: 25px;
-    padding: 15px;
-    background-color: #e9ecef;
-    border-radius: 5px;
-    min-height: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #message {
-    margin: 0;
-    color: #d9534f;
+  margin: 0;
+  color: #d9534f;
 }
 
 #shortenedUrl {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 5px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 5px;
 }
 
 #shortenedUrl:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* Estilos para validação de alias */
 .alias-rules {
-    font-size: 0.85em;
-    margin-top: 5px;
-    padding: 8px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    display: none;
+  font-size: 0.85em;
+  margin-top: 5px;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  display: none;
 }
 
 .alias-rules.active {
-    display: block;
+  display: block;
 }
 
 .alias-rules ul {
-    list-style-type: none;
-    padding-left: 5px;
-    margin: 5px 0;
+  list-style-type: none;
+  padding-left: 5px;
+  margin: 5px 0;
 }
 
 .alias-rules li {
-    margin: 3px 0;
-    display: flex;
-    align-items: center;
+  margin: 3px 0;
+  display: flex;
+  align-items: center;
 }
 
 .rule-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 16px;
-    font-size: 10px;
-    color: white;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 16px;
+  font-size: 10px;
+  color: white;
 }
 
 .rule-valid {
-    background-color: #28a745;
+  background-color: #28a745;
 }
 
 .rule-invalid {
-    background-color: #dc3545;
+  background-color: #dc3545;
 }
 
 .rule-pending {
-    background-color: #6c757d;
+  background-color: #6c757d;
 }
