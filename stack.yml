@@ -161,6 +161,13 @@ services:
       - "8080:8080"
     deploy:
       replicas: 1
+      update_config:
+        order: start-first
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - default
 
@@ -172,6 +179,13 @@ services:
       - '8083:8083'
     deploy:
       replicas: 1
+      update_config:
+        order: start-first
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - default
 
@@ -183,6 +197,13 @@ services:
       - "8081:8081"
     deploy:
       replicas: 1
+      update_config:
+        order: start-first
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - default
 
