@@ -1,27 +1,27 @@
-# Encurtador de URL
+# URL Shortener
 
-Um aplicativo front-end de encurtamento de URLs que se comunica com uma API Nginx para gerar links curtos.
+A front-end URL shortening application that communicates with an Nginx API to generate short links.
 
-## Estrutura do Projeto
+## Project Structure
 
-O projeto foi organizado seguindo os princípios SOLID, com cada componente tendo uma única responsabilidade:
+The project was organized following SOLID principles, with each component having a single responsibility:
 
-- **config.js**: Contém as configurações da aplicação, como URLs da API e endpoints
-- **ui-elements.js**: Gerencia os elementos da interface do usuário (DOM)
-- **ui-service.js**: Serviço para manipulação da interface do usuário
-- **api-service.js**: Serviço para comunicação com a API
-- **url-validator.js**: Serviço para validação de URLs
-- **app.js**: Lógica principal da aplicação
-- **index.js**: Arquivo principal responsável por inicializar a aplicação
+- **config.js**: Contains application configurations, such as API URLs and endpoints
+- **ui-elements.js**: Manages user interface elements (DOM)
+- **ui-service.js**: Service for manipulating the user interface
+- **api-service.js**: Service for communicating with the API
+- **url-validator.js**: Service for validating URLs
+- **app.js**: Main application logic
+- **index.js**: Main file responsible for initializing the application
 
-## Como Usar
+## How to Use
 
-1. Abra o arquivo `index.html` no navegador
-2. Insira a URL longa que deseja encurtar
-3. Opcionalmente, forneça um alias personalizado
-4. Clique em "Encurtar" para gerar a URL curta
+1. Open the `index.html` file in the browser
+2. Enter the long URL you want to shorten
+3. Optionally, provide a custom alias
+4. Click "Shorten" to generate the short URL
 
-## Requisitos
+## Requirements
 
-- A API Nginx deve estar em execução no endereço configurado em `config.js`
-- Navegador web moderno com suporte a JavaScript ES6 
+- The Nginx API must be running at the address configured in `config.js`
+- Modern web browser with JavaScript ES6 support
