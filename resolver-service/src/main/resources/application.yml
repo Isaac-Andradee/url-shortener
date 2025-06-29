@@ -1,6 +1,15 @@
 server:
   port: ${RESOLVER_SERVER_PORT}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
 spring:
   application:
     name: resolver-service

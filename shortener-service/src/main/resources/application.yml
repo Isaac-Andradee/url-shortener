@@ -1,6 +1,14 @@
 server:
   port: ${SHORTENER_SERVER_PORT}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
 
 spring:
   application:
@@ -47,6 +55,7 @@ eureka:
   instance:
     preferIpAddress: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    health-check-url-path: /actuator/health
 
 shortener:
   domain: ${SHORTENER_DOMAIN}
