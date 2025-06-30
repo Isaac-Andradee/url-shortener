@@ -146,20 +146,36 @@ services:
 
   eureka-server:
     image: isaacandra/eureka:latest
+    environment:
+      JAVA_OPTS: "-Xmx512m -Xms512m"
     env_file:
       - .env
     ports:
       - "8761:8761"
+    deploy:
+      resources:
+        reservations:
+          memory: 768M
+          cpus: '0.5'
+      mode: replicated
+      replicas: 1
     networks:
       - default
 
   shortener-service:
     image: isaacandra/shortener-service:latest
+    environment:
+      JAVA_OPTS: "-Xmx512m -Xms512m"
     env_file:
       - .env
     ports:
       - "8080:8080"
     deploy:
+      resources:
+        reservations:
+          memory: 768M
+          cpus: '0.5'
+      mode: replicated
       replicas: 1
       update_config:
         order: start-first
@@ -173,11 +189,18 @@ services:
 
   resolver-service:
     image: isaacandra/resolver-service:latest
+    environment:
+      JAVA_OPTS: "-Xmx512m -Xms512m"
     env_file:
       - .env
     ports:
       - '8083:8083'
     deploy:
+      resources:
+        reservations:
+          memory: 768M
+          cpus: '0.5'
+      mode: replicated
       replicas: 1
       update_config:
         order: start-first
@@ -191,11 +214,18 @@ services:
 
   keygen-service:
     image: isaacandra/keygen-service:latest
+    environment:
+      JAVA_OPTS: "-Xmx512m -Xms512m"
     env_file:
       - .env
     ports:
       - "8081:8081"
     deploy:
+      resources:
+        reservations:
+          memory: 768M
+          cpus: '0.5'
+      mode: replicated
       replicas: 1
       update_config:
         order: start-first
