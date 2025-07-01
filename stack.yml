@@ -147,7 +147,7 @@ services:
   eureka-server:
     image: isaacandra/eureka:latest
     environment:
-      JAVA_OPTS: "-Xmx512m -Xms512m"
+      JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
       - .env
     ports:
@@ -155,7 +155,7 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 768M
+          memory: 1G
           cpus: '0.5'
       mode: replicated
       replicas: 1
@@ -165,7 +165,7 @@ services:
   shortener-service:
     image: isaacandra/shortener-service:latest
     environment:
-      JAVA_OPTS: "-Xmx512m -Xms512m"
+      JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
       - .env
     ports:
@@ -173,7 +173,7 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 768M
+          memory: 1G
           cpus: '0.5'
       mode: replicated
       replicas: 1
@@ -190,7 +190,7 @@ services:
   resolver-service:
     image: isaacandra/resolver-service:latest
     environment:
-      JAVA_OPTS: "-Xmx512m -Xms512m"
+      JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
       - .env
     ports:
@@ -198,7 +198,7 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 768M
+          memory: 1G
           cpus: '0.5'
       mode: replicated
       replicas: 1
@@ -215,7 +215,7 @@ services:
   keygen-service:
     image: isaacandra/keygen-service:latest
     environment:
-      JAVA_OPTS: "-Xmx512m -Xms512m"
+      JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
       - .env
     ports:
@@ -223,7 +223,7 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 768M
+          memory: 1G
           cpus: '0.5'
       mode: replicated
       replicas: 1
