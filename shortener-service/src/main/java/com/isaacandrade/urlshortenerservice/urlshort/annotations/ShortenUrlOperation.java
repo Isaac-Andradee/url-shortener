@@ -23,6 +23,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import java.lang.annotation.*;
 
+/** * Custom annotation for the Shorten URL operation in the URL Shortener Service.
+ * This annotation is used to document the API endpoint for shortening URLs.
+ * @author Isaac Andrade
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

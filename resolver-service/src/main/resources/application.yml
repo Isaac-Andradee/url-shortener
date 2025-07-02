@@ -36,6 +36,11 @@ spring:
   cache:
     type: ${SPRING_CACHE_TYPE}
 
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html

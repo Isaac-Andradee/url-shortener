@@ -21,6 +21,12 @@ import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuration class for OpenAPI documentation.
+ * This class sets up the OpenAPI specification for the Shortener Service.
+ * @author Isaac Andrade
+ */
+
 @Configuration
 public class OpenApiConfig {
 

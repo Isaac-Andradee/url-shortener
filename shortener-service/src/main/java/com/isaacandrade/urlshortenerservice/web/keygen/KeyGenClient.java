@@ -24,6 +24,13 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Client for interacting with the Keygen service to generate short keys.
+ * This component uses WebClient to make HTTP requests to the Keygen service.
+ * It is annotated with @LoadBalanced to enable service discovery and load balancing.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class KeyGenClient {
     private final WebClient webClient;

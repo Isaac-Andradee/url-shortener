@@ -22,7 +22,13 @@ import com.isaacandrade.urlshortenerservice.urlshort.infra.DB.DbCacheSaver;
 import com.isaacandrade.common.url.model.dto.ShortenRequest;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * Use case for shortening URLs.
+ * This service handles the logic for creating a short URL from a long URL and an optional alias.
+ * It validates the alias, generates a short key, builds a URL mapping, and persists it in the database.
+ *
+ * @author Isaac Andrade
+ */
 @Service
 public class ShortenerUseCase {
 

@@ -17,6 +17,13 @@ package com.isaacandrade.keygeneratorservice.keygen.application.base62.core;
 
 import static com.isaacandrade.keygeneratorservice.keygen.application.base62.utils.Base62Constants.*;
 
+/**
+ * Base62Encoder is a utility class for encoding long values into Base62 strings.
+ * It is used to convert unique identifiers (like snowflake IDs) into a more compact and URL-friendly format.
+ * The encoding uses a custom Base62 character set defined in Base62Constants.
+ *
+ * @author Isaac Andrade
+ */
 public class Base62Encoder {
     public static String encode(long snowflakeId) {
         long uniqueId = snowflakeId & MASK;

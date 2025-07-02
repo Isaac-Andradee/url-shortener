@@ -21,6 +21,13 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
+/**
+ * Default implementation of NetworkInterfaceProvider.
+ * This class provides access to the system's network interfaces.
+ * It is used by the Snowflake ID generator to obtain network interface information.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class DefaultNetworkInterfaceProvider implements NetworkInterfaceProvider{
     @Override

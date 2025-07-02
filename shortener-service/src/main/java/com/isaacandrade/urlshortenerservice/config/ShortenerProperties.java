@@ -18,6 +18,11 @@ package com.isaacandrade.urlshortenerservice.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * Configuration properties for the URL shortener service.
+ * This class is used to bind properties prefixed with "shortener" from YAML's application file.
+ * @author Isaac Andrade
+ */
 @Component
 @ConfigurationProperties(prefix = "shortener")
 public class ShortenerProperties {

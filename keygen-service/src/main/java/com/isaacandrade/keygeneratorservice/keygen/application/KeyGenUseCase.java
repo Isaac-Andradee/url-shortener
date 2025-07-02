@@ -19,6 +19,12 @@ import com.isaacandrade.keygeneratorservice.keygen.application.base62.core.Base6
 import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core.SnowflakeIdGen;
 import org.springframework.stereotype.Service;
 
+/**
+ * Use case for generating unique keys using Snowflake ID generation and Base62 encoding.
+ * This service encapsulates the logic for generating a unique key that can be used in various applications.
+ *
+ * @author Isaac Andrade
+ */
 @Service
 public class KeyGenUseCase {
 

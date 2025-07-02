@@ -20,6 +20,13 @@ import org.springframework.stereotype.Component;
 
 import static com.isaacandrade.keygeneratorservice.keygen.application.snowflake.utils.SnowflakeConstants.*;
 
+/**
+ * Assembles a unique ID using the Snowflake algorithm.
+ * This class combines the timestamp, datacenter ID, machine ID, and sequence number into a single long value.
+ * It is used to generate unique identifiers in a distributed system.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class IdAssembler {
 

@@ -25,6 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
+/** * Controller for handling URL resolution requests.
+ * This controller maps incoming requests to the resolver use case, which resolves short keys to long URLs.
+ * It returns a 307 redirect response with the resolved long URL.
+ *
+ * @author Isaac Andrade
+ */
 @RestController
 @RequestMapping("/")
 public class ResolverController {

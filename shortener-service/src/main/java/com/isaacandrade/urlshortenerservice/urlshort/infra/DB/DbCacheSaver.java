@@ -20,6 +20,11 @@ import com.isaacandrade.common.url.repository.UrlRepository;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;
 
+/** * DbCacheSaver is responsible for saving URL mappings to the database and updating the cache.
+ * It uses a UrlRepository to persist the mappings and a CacheManager to manage the cache.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class DbCacheSaver {
     private final UrlRepository urlRepository;

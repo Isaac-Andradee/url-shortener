@@ -23,6 +23,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import java.lang.annotation.*;
 
+/**
+ * Custom annotation for the Resolver URL operation in the Resolver Service.
+ * This annotation is used to document the API endpoint for resolving shortened URLs.
+ *
+ * @author Isaac Andrade
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

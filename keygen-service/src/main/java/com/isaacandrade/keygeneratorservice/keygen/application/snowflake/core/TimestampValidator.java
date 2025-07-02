@@ -18,6 +18,13 @@ package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core;
 import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.RegressiveClockException;
 import org.springframework.stereotype.Component;
 
+/**
+ * Validates that the current timestamp is not less than the last timestamp.
+ * This is crucial for ensuring that the Snowflake ID generation does not regress in time,
+ * which could lead to duplicate IDs or other inconsistencies.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class TimestampValidator {
     public void validateTimestamp(long currentTimestamp, long lastTimestamp) {

@@ -24,6 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 import java.util.Map;
 
+/**
+ * Controller for generating unique keys.
+ * This controller handles requests to generate a unique key and returns it in the response.
+ *
+ * @author Isaac Andrade
+ */
 @RestController
 @RequestMapping("/generate")
 public class KeyGenController {

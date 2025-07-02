@@ -18,6 +18,13 @@ package com.isaacandrade.resolverservice.resolver.application;
 import com.isaacandrade.common.url.model.UrlMapping;
 import org.springframework.stereotype.Service;
 
+/**
+ * ResolverUseCase is responsible for resolving short URLs to their long counterparts.
+ * It first checks the cache for the mapping and, if not found, queries the database.
+ * The resolved URL is then saved back into the cache for future requests.
+ *
+ * @author Isaac Andrade
+ */
 @Service
 public class ResolverUseCase {
 
