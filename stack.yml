@@ -145,7 +145,7 @@ services:
       replicas: 1
 
   eureka-server:
-    image: isaacandra/eureka@sha256:704fbeabe8db49fb33a99a22aba8f83649ceb305f3933dd50f60a5f76783901e
+    image: sha256:704fbeabe8db49fb33a99a22aba8f83649ceb305f3933dd50f60a5f76783901e
     environment:
       JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
