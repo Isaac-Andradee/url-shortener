@@ -14,7 +14,12 @@
  * limitations under the License.
  */
 package com.isaacandrade.urlshortenerservice.urlshort.exception.message;
-
+/**
+ * Represents an error message for when an alias is not available.
+ * This class encapsulates the status code and the error message to be returned when an alias is already in use.
+ *
+ * @author Isaac Andrade
+ */
 public class AliasNotAvailableMessage {
     private int status;
     private String message;

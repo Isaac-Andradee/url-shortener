@@ -19,6 +19,12 @@ import com.isaacandrade.common.url.model.UrlMapping;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository interface for managing URL mappings in MongoDB.
+ * This interface extends MongoRepository to provide CRUD operations for UrlMapping entities.
+ *
+ * @author Isaac Andrade
+ */
 @Repository
 public interface UrlRepository extends MongoRepository<UrlMapping, String> {
 }

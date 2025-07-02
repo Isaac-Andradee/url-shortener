@@ -22,6 +22,13 @@ import org.springframework.stereotype.Component;
 
 import static com.isaacandrade.resolverservice.resolver.utils.ResolverConstants.CACHE_NAME;
 
+/**
+ * CacheLookup is responsible for managing URL mappings in the cache.
+ * It provides methods to retrieve and save URL mappings using a CacheManager.
+ * This class is used to optimize the retrieval of URL mappings by caching them.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class CacheLookup {
     private final CacheManager cacheManager;

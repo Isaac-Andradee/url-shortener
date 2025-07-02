@@ -18,6 +18,13 @@ package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.core;
 import com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.time.TimeStampProvider;
 import org.springframework.stereotype.Component;
 
+/**
+ * SnowflakeIdGen is responsible for generating unique identifiers using the Snowflake algorithm.
+ * It combines a timestamp, a sequence number, and a machine ID to create a unique ID.
+ * The class ensures that IDs are generated in a thread-safe manner and validates timestamps.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class SnowflakeIdGen {
 

@@ -15,6 +15,13 @@
  */
 package com.isaacandrade.keygeneratorservice.keygen.application.base62.utils;
 
+/**
+ * Constants for Base62 encoding.
+ * This class defines the Base62 character set, the length of the encoded string,
+ * and a mask for bitwise operations.
+ *
+ * @author Isaac Andrade
+ */
 public class Base62Constants {
     public static final String BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     public static final int LENGTH = 7;

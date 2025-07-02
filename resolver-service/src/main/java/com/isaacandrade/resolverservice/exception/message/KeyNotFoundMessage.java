@@ -15,6 +15,12 @@
  */
 package com.isaacandrade.resolverservice.exception.message;
 
+/**
+ * Represents an error message for when a key is not found.
+ * This class encapsulates the status code and the error message to be returned when a requested key does not exist.
+ *
+ * @author Isaac Andrade
+ */
 public class KeyNotFoundMessage {
     private int status;
     private String message;

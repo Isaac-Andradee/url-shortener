@@ -19,6 +19,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/** * Composite class for validating URL aliases.
+ * This class aggregates multiple alias validators and applies them sequentially.
+ * It is used to ensure that the alias meets all validation criteria before being processed.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class AliasValidationComposite {
     private final List<AliasValidator> validators;

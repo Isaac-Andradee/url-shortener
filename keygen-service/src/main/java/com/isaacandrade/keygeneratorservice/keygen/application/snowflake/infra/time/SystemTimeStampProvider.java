@@ -17,6 +17,12 @@ package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.infra.
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Provides the current system time in milliseconds.
+ * This implementation uses the system clock to retrieve the current time.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class SystemTimeStampProvider implements TimeStampProvider {
 

@@ -15,6 +15,12 @@
  */
 package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.message;
 
+/**
+ * Represents an error message for network-related issues.
+ * This class encapsulates the status code and the error message to be returned when a network error occurs.
+ *
+ * @author Isaac Andrade
+ */
 public class NetworkErrorMessage {
     private int status;
     private String message;

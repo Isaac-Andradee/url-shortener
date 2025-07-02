@@ -20,6 +20,13 @@ import com.isaacandrade.common.url.repository.UrlRepository;
 import com.isaacandrade.resolverservice.exception.KeyNotFoundException;
 import org.springframework.stereotype.Component;
 
+/**
+ * DbLookup is responsible for retrieving URL mappings from the database.
+ * It uses a UrlRepository to access the database and fetch the mapping
+ * associated with a given short key.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class DbLookup {
     private final UrlRepository urlRepository;

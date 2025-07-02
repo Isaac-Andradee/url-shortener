@@ -14,7 +14,12 @@
  * limitations under the License.
  */
 package com.isaacandrade.urlshortenerservice.urlshort.exception.message;
-
+/**
+ * Represents an error message for invalid alias format.
+ * This class encapsulates the status code and the error message to be returned when an alias does not meet the required format.
+ *
+ * @author Isaac Andrade
+ */
 public class AliasInvalidFormatMessage {
     int status;
     String message;

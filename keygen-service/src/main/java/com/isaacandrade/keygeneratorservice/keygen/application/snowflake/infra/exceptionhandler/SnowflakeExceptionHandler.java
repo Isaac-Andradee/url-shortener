@@ -25,6 +25,13 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ * Exception handler for Snowflake-related exceptions.
+ * This class handles specific exceptions related to the Snowflake key generation service
+ * and returns appropriate HTTP responses with error messages.
+ *
+ * @author Isaac Andrade
+ */
 @ControllerAdvice
 public class SnowflakeExceptionHandler extends ResponseEntityExceptionHandler {
 

@@ -20,6 +20,13 @@ import org.springframework.stereotype.Component;
 
 import static com.isaacandrade.keygeneratorservice.keygen.application.snowflake.utils.SnowflakeConstants.*;
 
+/**
+ * SequenceUpdater is responsible for managing the sequence number in the Snowflake ID generation process.
+ * It ensures that the sequence is incremented correctly and handles overflow by waiting for the next millisecond.
+ * This component is crucial for generating unique IDs in a distributed system.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class SequenceUpdater {
     private final TimeStampProvider timeStampProvider;

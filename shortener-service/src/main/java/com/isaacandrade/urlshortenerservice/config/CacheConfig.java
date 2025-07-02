@@ -23,6 +23,11 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 
 import java.time.Duration;
 
+/**
+ * Configuration class for Redis cache management.
+ * This class sets up the cache manager with a default configuration.
+ * @author Isaac Andrade
+ */
 @Configuration
 public class CacheConfig {
 

@@ -19,6 +19,13 @@ import com.isaacandrade.urlshortenerservice.web.keygen.KeyGenClient;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+/**
+ * Resolver for generating or resolving short keys.
+ * This component uses a KeyGenClient to generate a new key if the provided alias is empty.
+ * It is used to ensure that every URL has a valid short key.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class KeyGenResolver {
     private final KeyGenClient keyGenClient;

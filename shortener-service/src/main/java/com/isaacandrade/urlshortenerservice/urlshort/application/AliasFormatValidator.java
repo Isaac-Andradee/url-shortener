@@ -21,6 +21,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
+/** * Validates the format of an alias for URL shortening.
+ * The alias must start and end with an alphanumeric character,
+ * can contain alphanumeric characters, underscores, and hyphens,
+ * and must not contain consecutive underscores or hyphens.
+ * The length of the alias must be between 3 and 20 characters.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class AliasFormatValidator implements AliasValidator{
     private static final Pattern PATTERN =  Pattern.compile("^[A-Za-z0-9](?!.*[_-]{2})[A-Za-z0-9_-]{1,18}[A-Za-z0-9]$");

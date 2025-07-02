@@ -20,6 +20,11 @@ import com.isaacandrade.urlshortenerservice.urlshort.exception.AliasNotAvailable
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 
+/** * Validates the availability of an alias for URL shortening.
+ * If the alias is not blank and already exists in the repository,
+ * an AliasNotAvailableException is thrown.
+ * @author Isaac Andrade
+ */
 @Component
 public class AliasAvailabilityValidator implements AliasValidator{
 

@@ -14,7 +14,12 @@
  * limitations under the License.
  */
 package com.isaacandrade.urlshortenerservice.urlshort.exception.message;
-
+/**
+ * Represents an error message for when the Keygen service is unavailable.
+ * This class encapsulates the status code and the error message to be returned when the Keygen service cannot be reached.
+ *
+ * @author Isaac Andrade
+ */
 public class KeygenServiceUnavailableMessage {
     private int status;
     private String message;

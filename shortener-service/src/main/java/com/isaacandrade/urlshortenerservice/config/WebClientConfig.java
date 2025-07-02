@@ -20,6 +20,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
+/**
+ * Configuration class for WebClient with LoadBalanced support.
+ * This allows the WebClient to resolve service names through the service discovery mechanism.
+ * @author Isaac Andrade
+ */
 @Configuration
 public class WebClientConfig {
     @Bean

@@ -15,6 +15,12 @@
  */
 package com.isaacandrade.resolverservice.resolver.utils;
 
+/**
+ * Constants used in the Resolver Service.
+ * This class contains static final variables that are used throughout the service.
+ *
+ * @author Isaac Andrade
+ */
 public class ResolverConstants {
     public static final String CACHE_NAME = "keys";
 }

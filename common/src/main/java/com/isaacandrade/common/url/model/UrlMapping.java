@@ -22,6 +22,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Represents a URL mapping in the system.
+ * This class is used to store the mapping between a short key and a long URL,
+ * along with an optional alias for the URL.
+ *
+ * @author Isaac Andrade
+ */
 @Document(collection = "urls")
 public class UrlMapping implements Serializable {
 

@@ -15,7 +15,12 @@
  */
 package com.isaacandrade.urlshortenerservice.urlshort.application;
 
-
+/**
+ * Interface for validating URL aliases.
+ * Implementations should provide the logic to validate the alias format and uniqueness.
+ *
+ * @author Isaac Andrade
+ */
 public interface AliasValidator {
     void validate(String alias);
 }

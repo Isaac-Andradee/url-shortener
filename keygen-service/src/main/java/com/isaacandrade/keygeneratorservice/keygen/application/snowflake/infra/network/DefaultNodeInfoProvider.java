@@ -22,6 +22,15 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
+/**
+ * Default implementation of NodeInfoProvider that retrieves the datacenter and machine IDs
+ * based on the hostname and network interfaces of the current machine.
+ *
+ * This class uses a HostnameResolver to get the hostname and a NetworkInterfaceProvider
+ * to access the network interfaces for determining the machine ID.
+ *
+ * @author Isaac Andrade
+ */
 
 // TODO: Maybe find others ways to get both nodes...
 // TODO: Abstract this class to allow different implementations

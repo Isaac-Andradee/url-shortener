@@ -17,5 +17,12 @@ package com.isaacandrade.common.url.model.dto;
 
 import java.io.Serializable;
 
+/**
+ * Represents a response containing a shortened URL.
+ * This record encapsulates the short URL generated from a long URL.
+ *
+ * @param shortUrl The shortened URL as a string.
+ * @author Isaac Andrade
+ */
 public record ShortenResponse(String shortUrl) implements Serializable {
 }

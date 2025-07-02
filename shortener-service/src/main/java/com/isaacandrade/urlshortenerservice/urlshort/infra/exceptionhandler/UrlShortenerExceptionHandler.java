@@ -27,6 +27,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.reactive.result.method.annotation.ResponseEntityExceptionHandler;
 
+/** * Global exception handler for URL shortener service.
+ * This class handles exceptions related to alias availability, format validation, and service unavailability.
+ * It returns appropriate HTTP responses with error messages.
+ *
+ * @author Isaac Andrade
+ */
 @ControllerAdvice
 public class UrlShortenerExceptionHandler extends ResponseEntityExceptionHandler {
 

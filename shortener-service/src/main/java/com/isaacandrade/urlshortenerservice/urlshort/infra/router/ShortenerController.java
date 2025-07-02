@@ -25,6 +25,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/** * Controller for handling URL shortening requests.
+ * This controller processes incoming requests to shorten URLs and returns the shortened URL in the response.
+ *
+ * @author Isaac Andrade
+ */
 @RestController
 @RequestMapping("/shorten")
 public class ShortenerController {

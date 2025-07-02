@@ -19,6 +19,13 @@ import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
 
+/**
+ * Default implementation of the HostnameResolver interface.
+ * This class resolves the hostname of the local machine using InetAddress.
+ * If an error occurs during resolution, it returns a default hostname.
+ *
+ * @author Isaac Andrade
+ */
 @Component
 public class DefaultHostnameResolver implements HostnameResolver{
     @Override

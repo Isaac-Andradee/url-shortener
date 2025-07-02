@@ -15,6 +15,12 @@
  */
 package com.isaacandrade.keygeneratorservice.keygen.application.snowflake.exception.message;
 
+/**
+ * Represents an error message for when a regressive clock error occurs in the Snowflake ID generation process.
+ * This class encapsulates the status code and the error message to be returned when the system detects a clock regression.
+ *
+ * @author Isaac Andrade
+ */
 public class RegressiveClockErrorMessage {
     private int status;
     private String message;

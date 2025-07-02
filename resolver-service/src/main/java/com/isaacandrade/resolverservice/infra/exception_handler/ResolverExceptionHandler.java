@@ -23,6 +23,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/** * Global exception handler for the Resolver Service.
+ * This class handles exceptions thrown by the service and returns appropriate HTTP responses.
+ *
+ * @author Isaac Andrade
+ */
 @ControllerAdvice
 public class ResolverExceptionHandler extends ResponseEntityExceptionHandler {
 
