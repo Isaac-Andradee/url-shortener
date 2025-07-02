@@ -128,9 +128,9 @@ docker login
 
 # Build and tag images (replace 'yourusername' with your Docker Hub username)
 docker build -t yourusername/eureka:latest ./eureka
-docker build -t yourusername/shortener-service:latest ./shortener-service
-docker build -t yourusername/resolver-service:latest ./resolver-service
-docker build -t yourusername/keygen-service:latest ./keygen-service
+docker build -t yourusername/shortener-service ./shortener-service
+docker build -t yourusername/resolver-service ./resolver-service
+docker build -t yourusername/keygen-service ./keygen-service
 
 # Push images to Docker Hub
 docker push yourusername/eureka:latest
@@ -144,7 +144,7 @@ docker push yourusername/keygen-service:latest
 After pushing your images, update the `stack.yml` file to use your Docker Hub images:
 
 ```yaml
-# Replace all occurrences of 'isaacandra' with your Docker Hub username
+# Replace all occurrences of sha256 digest with your Docker Hub image built
 # Example:
 eureka-server:
   image: yourusername/eureka:latest

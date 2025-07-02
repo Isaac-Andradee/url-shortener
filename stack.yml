@@ -145,7 +145,7 @@ services:
       replicas: 1
 
   eureka-server:
-    image: isaacandra/eureka:latest
+    image: isaacandra/eureka@sha256:704fbeabe8db49fb33a99a22aba8f83649ceb305f3933dd50f60a5f76783901e
     environment:
       JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
@@ -163,7 +163,7 @@ services:
       - default
 
   shortener-service:
-    image: isaacandra/shortener-service:latest
+    image: sha256:98a1dc4d002451eb271b68c23260c8fb7d5ca05fc101fa19af9df8d664371edf
     environment:
       JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
@@ -188,7 +188,7 @@ services:
       - default
 
   resolver-service:
-    image: isaacandra/resolver-service:latest
+    image: sha256:a60ba318977fd3b282c2489e268f30515ec9cb814e7debc349c66aca3c2a0076
     environment:
       JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
@@ -213,7 +213,7 @@ services:
       - default
 
   keygen-service:
-    image: isaacandra/keygen-service:latest
+    image: sha256:643acc93287482ccbe9a68e1d63d6d1c4e098ab31980f80ff95d4db19c09a1d8
     environment:
       JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=25.0"
     env_file:
